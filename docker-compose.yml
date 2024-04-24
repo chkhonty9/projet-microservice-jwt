@@ -27,7 +27,7 @@ services:
         discovery-service:
           condition: service_healthy
   user-manager-service:
-    build: ./user-manger-service
+    build: ./user-manager-service
     container_name: user-manager-service
     ports:
       - '8082:8082'
