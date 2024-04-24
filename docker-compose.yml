@@ -14,32 +14,32 @@ services:
     build: ./config-service
     container_name: config-service
     ports:
-        - '9999:9999'
+      - '9999:9999'
     expose:
-        - '9999'
+      - '9999'
     environment:
-        - DISCOVERY_SERVICE_URL=http://ebank-discovery-service:8761/eureka
+      - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9999/actuator/health" ]
       interval: 10s
       retries: 4
     depends_on:
-        discovery-service:
-          condition: service_healthy
+      discovery-service:
+        condition: service_healthy
   user-manager-service:
     build: ./user-manager-service
     container_name: user-manager-service
     ports:
       - '8082:8082'
     expose:
-      - '8002'
+      - '8082'
     environment:
-      - DISCOVERY_SERVICE_URL=http://ebank-discovery-service:8761/eureka
-      - CONFIG_SERVICE_URL=http://ebank-config-service:9999
+      - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-service:9999
     healthcheck:
-        test: [ "CMD", "curl", "-f", "http://localhost:8081/actuator/health" ]
-        interval: 10s
-        retries: 4
+      test: [ "CMD", "curl", "-f", "http://localhost:8081/actuator/health" ]
+      interval: 10s
+      retries: 4
     depends_on:
       config-service:
         condition: service_healthy
@@ -51,12 +51,12 @@ services:
     expose:
       - '8081'
     environment:
-      - DISCOVERY_SERVICE_URL=http://ebank-discovery-service:8761/eureka
-      - CONFIG_SERVICE_URL=http://ebank-config-service:9999
+      - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-service:9999
     depends_on:
       user-manager-service:
         condition: service_healthy
-  gateway-service:
+  enset-gateway-service:
     build: ./gateway-service
     container_name: gateway-service
     ports:
@@ -64,8 +64,8 @@ services:
     expose:
       - '8888'
     environment:
-      - DISCOVERY_SERVICE_URL=http://ebank-discovery-service:8761/eureka
-      - CONFIG_SERVICE_URL=http://ebank-config-service:9999
+      - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://config-service:9999
     depends_on:
       config-service:
         condition: service_healthy
