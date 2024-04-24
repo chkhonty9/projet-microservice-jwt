@@ -53,10 +53,10 @@ services:
     container_name: catalogue-service
     ports:
       - '8082:8082'
-    links:
-      - db-mongodb
     expose:
       - '8082'
+#    links:
+#      - db-mongodb
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
       - CONFIG_SERVICE_URL=http://config-service:9999
