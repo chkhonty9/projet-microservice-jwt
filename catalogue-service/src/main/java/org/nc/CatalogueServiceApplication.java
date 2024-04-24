@@ -25,7 +25,7 @@ public class CatalogueServiceApplication {
 			categoryRepository.deleteAll();
 			productRepository.deleteAll();
 
-			/* Stream.of("C1 Ordinateurs", "C2 Imprimantes").forEach(c->{
+			 Stream.of("C1 Ordinateurs", "C2 Imprimantes").forEach(c->{
 				categoryRepository.save(new Category(c.split(" ")[0],c.split(" ")[1],c,null,new ArrayList<>()));
 			});
 			categoryRepository.findAll().forEach(System.out::println);
@@ -45,7 +45,7 @@ public class CatalogueServiceApplication {
 				c2.getProducts().add(p);
 				categoryRepository.save(c2);
 			});
-			productRepository.findAll().forEach(System.out::println); */
+			productRepository.findAll().forEach(System.out::println);
 		};
 	}
 }

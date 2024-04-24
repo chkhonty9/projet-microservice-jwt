@@ -55,7 +55,7 @@ services:
       - CONFIG_SERVICE_URL=http://config-service:9999
     depends_on:
       user-manager-service:
-        condition: service_healthy
+        condition: service_started
   gateway-service:
     build: ./gateway-service
     container_name: gateway-service
