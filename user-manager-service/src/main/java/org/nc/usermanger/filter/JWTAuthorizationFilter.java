@@ -48,6 +48,15 @@ public class JWTAuthorizationFilter  extends OncePerRequestFilter {
             System.out.println("username : " + username);
             System.out.println("roles : " + roles);
             Collection<GrantedAuthority> authorities = new ArrayList<>();
+            // tester
+            if (request.getRequestURI().startsWith("/admin")) {
+                if (!roles.contains("ADMIN")) {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    return;
+                }
+            }
+            // //////////
+
             roles.forEach(r -> {
                 authorities.add(new SimpleGrantedAuthority(r));
             });
