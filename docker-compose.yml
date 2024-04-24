@@ -56,7 +56,7 @@ services:
     depends_on:
       user-manager-service:
         condition: service_healthy
-  enset-gateway-service:
+  gateway-service:
     build: ./gateway-service
     container_name: gateway-service
     ports:
