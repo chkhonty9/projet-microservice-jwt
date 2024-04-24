@@ -1,4 +1,9 @@
 services:
+#  db-mongodb:
+#    image: mongo:latest
+#    container_name: "db-mongodb"
+#    ports:
+#      - 27017:27017
   discovery-service:
     build: ./discovery-service
     container_name: discovery-service
@@ -48,6 +53,8 @@ services:
     container_name: catalogue-service
     ports:
       - '8082:8082'
+    links:
+      - db-mongodb
     expose:
       - '8082'
     environment:
