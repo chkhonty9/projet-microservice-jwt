@@ -36,6 +36,10 @@ services:
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
       - CONFIG_SERVICE_URL=http://config-service:9999
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8082/actuator/health" ]
+      interval: 10s
+      retries: 4
     depends_on:
       config-service:
         condition: service_healthy
@@ -50,7 +54,7 @@ services:
       - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
       - CONFIG_SERVICE_URL=http://config-service:9999
     depends_on:
-      config-service:
+      user-manager-service:
         condition: service_healthy
   enset-gateway-service:
     build: ./gateway-service
