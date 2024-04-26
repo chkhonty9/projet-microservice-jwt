@@ -1,9 +1,9 @@
 services:
-#  db-mongodb:
-#    image: mongo:latest
-#    container_name: "db-mongodb"
-#    ports:
-#      - 27017:27017
+  db-mongodb:
+    image: mongo:latest
+    container_name: "db-mongodb"
+    ports:
+      - 27017:27017
   discovery-service:
     build: ./discovery-service
     container_name: discovery-service
@@ -55,8 +55,8 @@ services:
       - '8082:8082'
     expose:
       - '8082'
-#    links:
-#      - db-mongodb
+    links:
+      - db-mongodb
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
       - CONFIG_SERVICE_URL=http://config-service:9999
