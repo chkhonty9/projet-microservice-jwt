@@ -22,7 +22,8 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/angular-front-end/browser /usr/share/nginx/html
+#COPY --from=build /usr/local/app/dist/angular-front-end/browser /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/angular-front-end /usr/share/nginx/html
 
-# Expose port 80
+# Expose port 8080
 EXPOSE 8080
