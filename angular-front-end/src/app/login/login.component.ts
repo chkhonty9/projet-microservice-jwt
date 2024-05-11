@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../service/authentication.service";
 import {Router} from '@angular/router';
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {User} from "../model/user";
+import {Register} from "../model/register";
 
 @Component({
   selector: 'app-login',
@@ -9,18 +12,20 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  obj : any = {
-    username : 'admin',
-    password : '12345678'
-  };
+  public loginForm!: FormGroup;
+  public signupForm!: FormGroup;
+  public user!: User;
+  public register!: Register;
+
   constructor(private authService:AuthenticationService,
-              private router:Router) {}
+              private router:Router,
+              private fb : FormBuilder,) {}
   ngOnInit() {
 
   }
   onLogin(){
     console.log('login component : onLogin function');
-    this.authService.login(this.obj).subscribe(resp=>{
+    this.authService.login(this.user).subscribe(resp=>{
         console.log('response : ', resp);
         this.authService.saveToken(resp.headers.get('Authorization'));
       },
@@ -29,10 +34,10 @@ export class LoginComponent implements OnInit {
       })
   }
 
-  onRegister(user:any){
-    this.authService.register(user)
+  onRegister(){
+    this.authService.register(this.register)
       .subscribe(data=>{
-          this.obj=data;
+          this.user = data;
         },
         err=>{
           console.log('error : ', err)

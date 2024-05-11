@@ -36,4 +36,9 @@ public class UserController {
         return accountService.saveUser(user);
     }
 
+    @GetMapping("/username/{username}")
+    public UserDTO findByUsername(@PathVariable String username){
+        return accountService.findByUserName(username);
+    }
+
 }

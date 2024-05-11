@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Observable} from "rxjs";
+import {Register} from "../model/register";
+import {User} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,8 @@ export class AuthenticationService {
     return this.http.post(this.host+`/login`,user,{ observe: 'response'});
   }
 
-  register(user:any){
-    return this.http.post(this.host+"/user/register",user);
+  register(register: Register): Observable<User>{
+    return this.http.post<User>(this.host+"/user/register",register);
   }
   saveToken(jwtToken:any){
     console.log('service : save token function');

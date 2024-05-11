@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from "./service/authentication.service";
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -17,18 +18,19 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:8888'], // Update with your domain
-        disallowedRoutes: ['localhost:8888/USER-MANAGER-SERVICE/login'] // Update with your login route
-      }
-    }),
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: ['localhost:8888'], // Update with your domain
+                disallowedRoutes: ['localhost:8888/USER-MANAGER-SERVICE/login'] // Update with your login route
+            }
+        }),
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [
     provideClientHydration(),
     AuthenticationService,
