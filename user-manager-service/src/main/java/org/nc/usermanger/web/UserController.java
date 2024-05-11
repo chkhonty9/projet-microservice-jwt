@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.nc.usermanger.dto.RoleDTO;
 import org.nc.usermanger.dto.UserDTO;
 import org.nc.usermanger.service.AccountService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +22,9 @@ public class UserController {
         String repassword = data.getRepassword();
         if(!password.equals(repassword))
             throw new RuntimeException("You must confirm your password");
-        String username = data.getUsername();
-        UserDTO user = new UserDTO();
 
-        user.setUsername(username);
-        user.setPassword(password);
+        UserDTO user = new UserDTO();
+        BeanUtils.copyProperties(data, user);
         accountService.saveUser(user);
 
         return user;

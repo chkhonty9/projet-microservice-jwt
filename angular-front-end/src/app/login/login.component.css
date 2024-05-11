@@ -19,7 +19,7 @@ body{
   height:100%;
   position:absolute;
   padding:90px 70px 50px 70px;
-  background:rgba(0, 77, 77,.9);
+  background: rgba(46, 147, 250, 0.9);
 }
 .login-snip .login,
 .login-snip .sign-up-form{
@@ -157,4 +157,4 @@ a{color:inherit;text-decoration:none}
 
 ::placeholder{
   color: #b3b3b3;
-} 
+}

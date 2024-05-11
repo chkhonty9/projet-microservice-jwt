@@ -10,4 +10,8 @@ public class RegistrationForm {
     private String username;
     private String password;
     private String repassword;
+    private String name;
+    private String email;
+    private String address;
+    private String phoneNumber;
 }

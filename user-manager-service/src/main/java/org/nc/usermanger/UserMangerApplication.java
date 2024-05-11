@@ -29,8 +29,8 @@ public class UserMangerApplication{
         return args -> {
             accountService.saveRole(new RoleDTO(null,"USER"));
             accountService.saveRole(new RoleDTO(null,"ADMIN"));
-            accountService.saveUser(new UserDTO(null,"nouhaila","nouha1234", null));
-            accountService.saveUser(new UserDTO(null,"admin","12345678", null));
+            accountService.saveUser(new UserDTO(null,"nouhaila","nouha1234","NOUHAILA CHKHONTY","nohaila.chkhonty@gmail.com","ksar el kebir","0625614992", null));
+            accountService.saveUser(new UserDTO(null,"admin","12345678","ADMIN","admin@gmail.com","Larache","0625614992", null));
             accountService.addRoleToUser("admin", "ADMIN");
             //System.out.println(userRepository.findAll());
         };

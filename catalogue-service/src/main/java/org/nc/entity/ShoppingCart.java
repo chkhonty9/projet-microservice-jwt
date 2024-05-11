@@ -21,6 +21,6 @@ public class ShoppingCart {
     private boolean status;
     private Date createdAt;
 
-    private Collection<Product> products = new ArrayList<>();
+    private Collection<CartItem> cartItems = new ArrayList<>();
 
 }

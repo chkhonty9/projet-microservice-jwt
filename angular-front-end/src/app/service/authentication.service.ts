@@ -31,11 +31,21 @@ export class AuthenticationService {
     console.log('role : ', this.roles);
   }
 
+  loadToken(){
+    this.jwtToken=localStorage.getItem('token');
+    return this.jwtToken;
+  }
+
+
   isAdmin(){
     for(let r of this.roles){
       if(r.authority=='ADMIN') return true;
     }
     return false;
+  }
+
+  logout(){
+    localStorage.removeItem('token');
   }
 
 }

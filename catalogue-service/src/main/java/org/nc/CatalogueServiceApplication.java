@@ -22,7 +22,7 @@ public class CatalogueServiceApplication {
 	@Bean
 	CommandLineRunner start(CategoryRepository categoryRepository, ProductRepository productRepository){
 		return args -> {
-			categoryRepository.deleteAll();
+			/*categoryRepository.deleteAll();
 			productRepository.deleteAll();
 
 			 Stream.of("C1 Ordinateurs", "C2 Imprimantes").forEach(c->{
@@ -45,7 +45,7 @@ public class CatalogueServiceApplication {
 				c2.getProducts().add(p);
 				categoryRepository.save(c2);
 			});
-			productRepository.findAll().forEach(System.out::println);
+			productRepository.findAll().forEach(System.out::println);*/
 		};
 	}
 }

@@ -29,4 +29,14 @@ export class LoginComponent implements OnInit {
       })
   }
 
+  onRegister(user:any){
+    this.authService.register(user)
+      .subscribe(data=>{
+          this.obj=data;
+        },
+        err=>{
+          console.log('error : ', err)
+        })
+  }
+
 }

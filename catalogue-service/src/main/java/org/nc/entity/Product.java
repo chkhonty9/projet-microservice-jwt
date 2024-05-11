@@ -15,9 +15,11 @@ public class Product {
     private String id;
     private String name;
     private double price;
+    private boolean promotion;
+    private boolean available;
     private String description;
     private byte[] image;
-
+    private double stock;
 
     @DBRef
     private Category category;
