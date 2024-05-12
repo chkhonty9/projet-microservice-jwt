@@ -74,3 +74,15 @@
     </div>
   </div>
 </div>
+<script>
+  window.addEventListener('load', function() {
+    adjustLoginBoxHeight();
+  });
+
+  function adjustLoginBoxHeight() {
+    var loginBox = document.querySelector('.login-box');
+    var contentHeight = loginBox.scrollHeight;
+    loginBox.style.height = contentHeight + 'px';
+  }
+</script>
+
