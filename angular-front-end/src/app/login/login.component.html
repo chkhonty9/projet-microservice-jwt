@@ -10,11 +10,11 @@
               <div class="login">
                 <div class="group">
                   <label for="username-login" class="label">Username</label>
-                  <input id="username-login" type="text" class="input"  placeholder="Enter your username">
+                  <input id="username-login" type="text" class="input"  placeholder="Enter your username" formControlName="username">
                 </div>
                 <div class="group">
                   <label for="pass-login" class="label">Password</label>
-                  <input  id="pass-login" type="password" class="input" data-type="password" placeholder="Enter your password">
+                  <input  id="pass-login" type="password" class="input" data-type="password" placeholder="Enter your password" formControlName="password">
                 </div>
                 <div class="group">
                   <input id="check" type="checkbox" class="check" checked>
@@ -33,31 +33,31 @@
               <div class="sign-up-form">
                 <div class="group">
                   <label for="user" class="label">Username</label>
-                  <input id="user" type="text" class="input" placeholder="Create your Username">
+                  <input id="user" type="text" class="input" placeholder="Create your Username" formControlName="username">
                 </div>
                 <div class="group">
                   <label for="password" class="label">Password</label>
-                  <input id="password" type="password" class="input" data-type="password" placeholder="Create your password">
+                  <input id="password" type="password" class="input" data-type="password" placeholder="Create your password" formControlName="password">
                 </div>
                 <div class="group">
                   <label for="pass" class="label">Repeat Password</label>
-                  <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password" >
+                  <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password" formControlName="repassword">
                 </div>
                 <div class="group">
-                  <label for="name" class="label">Email Address</label>
-                  <input id="name" type="text" class="input" placeholder="Enter your email address">
+                  <label for="name" class="label">Name</label>
+                  <input id="name" type="text" class="input" placeholder="Enter your name" formControlName="name">
                 </div>
                 <div class="group">
                   <label for="email" class="label">Email Address</label>
-                  <input id="email" type="text" class="input" placeholder="Enter your email address">
+                  <input id="email" type="text" class="input" placeholder="Enter your email address" formControlName="email">
                 </div>
                 <div class="group">
-                  <label for="address" class="label">Email Address</label>
-                  <input id="address" type="text" class="input" placeholder="Enter your email address">
+                  <label for="address" class="label">Address</label>
+                  <input id="address" type="text" class="input" placeholder="Enter your address" formControlName="address">
                 </div>
                 <div class="group">
-                  <label for="phoneNumber" class="label">Email Address</label>
-                  <input id="phoneNumber" type="text" class="input" placeholder="Enter your email address">
+                  <label for="phoneNumber" class="label">Phone</label>
+                  <input id="phoneNumber" type="text" class="input" placeholder="Enter your phone number" formControlName="phoneNumber">
                 </div>
                 <div class="group">
                   <input type="submit" class="button" value="Sign Up" [disabled]="signupForm.invalid">
