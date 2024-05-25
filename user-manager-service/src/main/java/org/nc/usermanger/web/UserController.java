@@ -30,7 +30,7 @@ public class UserController {
         return user;
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public UserDTO update(@PathVariable Long id, @RequestBody UserDTO user){
         user.setId(id);
         return accountService.saveUser(user);

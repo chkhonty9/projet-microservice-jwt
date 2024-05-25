@@ -8,5 +8,5 @@ export interface User {
   email: string,
   address: string ,
   phoneNumber: string ,
-  roles: Array<Role>
+  roles: Role[]
 }

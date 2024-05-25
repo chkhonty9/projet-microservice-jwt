@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <!-- Vertical Nav Pills -->
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <div *ngFor="let action of actions">
+          <a (click)="setCurrentAction(action)"
+             [class]="currentAction === action ? 'nav-link active' : 'nav-link'"
+             id="v-pills-home-tab"
+             data-toggle="pill"
+             role="tab"
+             aria-controls="v-pills-home"
+             aria-selected="true"
+             [routerLink]="action.route"
+             *ngIf="action.authorized">
+            {{ action.title }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <!-- Tab Content -->
+      <div class="tab-content" id="v-pills-tabContent">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

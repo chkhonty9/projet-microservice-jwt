@@ -1,0 +1,28 @@
+/* Customize the vertical navigation */
+.nav-pills .nav-link {
+  border-radius: 0;
+  padding: 10px;
+  margin-bottom: 2px;
+  color: #a83eee;
+  background-color: white; /* Background color of the nav links */
+  /*border: 1px solid #dee2e6;*/ /* Border color */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #d49cfa; /* Active nav link background color */
+  color: #fff; /* Active nav link text color */
+  /*border-color: #9f6ac5;*/ /* Active nav link border color */
+}
+
+/* Adjust the tab content */
+.tab-content {
+  padding: 5px;
+  /*border: 1px solid #dee2e6; !* Border color of the tab content *!
+  border-radius: 0;*/
+}
+
+/* Optional: Hover effect on nav links */
+.nav-pills .nav-link:hover {
+  background-color: #d49cfa; /* Hover background color */
+  color: #9a3bdc; /* Hover text color */
+}

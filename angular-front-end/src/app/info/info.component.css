@@ -1,0 +1,40 @@
+.container {
+  margin-top: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #9f6ac5;
+  color: #fff;
+  padding: 15px;
+}
+
+.card-title {
+  margin: 0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #a83eee;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #b04af6;
+}

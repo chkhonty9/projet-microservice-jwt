@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../service/authentication.service";
+import {AuthenticationService} from "../service/auth/authentication.service";
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Register} from "../model/register";
@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(resp=>{
         console.log('response : ', resp);
         this.authService.saveToken(resp.headers.get('Authorization'));
-        this.router.navigateByUrl('mainPage');
+        localStorage.setItem("isAdmin", this.authService.isAdmin().toString());
+        this.router.navigateByUrl('layout');
       },
       err=>{
         console.log('error : ', err)

@@ -1,3 +1,4 @@
+# application.yaml
 spring:
   cloud:
     gateway:
@@ -5,7 +6,9 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
-            allowedHeaders: "*"
+            allowedHeaders:
+             - "*"
+             - Authorization
             allowedMethods:
               - GET
               - POST

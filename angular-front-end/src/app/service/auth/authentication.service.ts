@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Observable} from "rxjs";
-import {Register} from "../model/register";
-import {User} from "../model/user";
+import {Register} from "../../model/register";
+import {User} from "../../model/user";
+import {UserService} from "../user/user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthenticationService {
   private host:string="http://localhost:8888/USER-MANAGER-SERVICE";
   private jwtToken:any;
   private roles:Array<any>=[];
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient,private userService:UserService) {}
 
   login(user:any){
     console.log('service : login function');
@@ -33,6 +34,37 @@ export class AuthenticationService {
     console.log('role : ', this.roles);
   }
 
+  saveUser() {
+    console.log('service authentication : saveUser function');
+    let jwtHelper = new JwtHelperService();
+
+    const decodedToken = jwtHelper.decodeToken(this.jwtToken);
+
+    if (decodedToken == null) {
+      console.error('Failed to decode token');
+      return;
+    }
+    const username = decodedToken.sub;
+
+    if (username == null) {
+      console.error('Token does not contain a valid username');
+      return;
+    }
+    console.log('username : ' + username);
+
+    this.userService.user(username).subscribe(
+      user => {
+        console.log('resp : ' + user.id);
+        this.userService.setCurrentUser(user);
+        console.log('user email : ' + this.userService.getCurrentUser().email);
+      },
+      err => {
+        console.log('error : ', err);
+      }
+    );
+  }
+
+
   loadToken(){
     this.jwtToken=localStorage.getItem('token');
     return this.jwtToken;
@@ -41,7 +73,7 @@ export class AuthenticationService {
 
   isAdmin(){
     for(let r of this.roles){
-      if(r.authority=='ADMIN') return true;
+      if(r =='ADMIN') return true;
     }
     return false;
   }
