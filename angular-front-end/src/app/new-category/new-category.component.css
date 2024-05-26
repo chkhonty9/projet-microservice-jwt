@@ -1,0 +1,48 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.file-name {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #9a3bdc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  background-color: #d49cfa;
+  cursor: not-allowed;
+}
+.btn-primary:hover{
+  background-color: #a83eee;
+}
