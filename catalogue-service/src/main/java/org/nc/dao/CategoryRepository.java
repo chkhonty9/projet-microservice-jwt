@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource
+//@RepositoryRestResource
 public interface CategoryRepository extends MongoRepository<Category, String> {
-    List<Category> findByName(String categoryName);
+    Category findByName(String categoryName);
 }

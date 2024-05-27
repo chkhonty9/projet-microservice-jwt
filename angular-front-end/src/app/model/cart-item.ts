@@ -1,9 +1,11 @@
 import { Product } from './product';
 
-export interface CartItem {
-  id: string;
-  quantity: number;
-  addedAt: Date;
-  price: number;
-  product: Product;
+export class CartItem {
+  id: string | null = null;
+  quantity: number = 0;
+  addedAt: Date = new Date();
+  price: number = 0;
+  product: Product = new Product();
+  constructor() {
+  }
 }

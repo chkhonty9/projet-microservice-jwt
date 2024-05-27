@@ -1,9 +1,11 @@
 import { Product } from './product';
 
-export interface Category {
-  id: string;
-  name: string;
-  description: string;
-  image: ArrayBuffer;
-  products: Product[];
+export class Category {
+  id: string | null = null;
+  name: string = '';
+  description: string = '';
+  image: string = '';
+  products: Array<Product> = [];
+  constructor() {
+  }
 }

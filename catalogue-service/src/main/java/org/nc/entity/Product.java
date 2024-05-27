@@ -18,7 +18,7 @@ public class Product {
     private boolean promotion;
     private boolean available;
     private String description;
-    private byte[] image;
+    private String image;
     private double stock;
 
     @DBRef

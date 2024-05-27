@@ -20,13 +20,18 @@ import { InfoComponent } from './info/info.component';
 import {UserService} from "./service/user/user.service";
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ManageProductComponent } from './manage-product/manage-product.component';
+import { ProductComponent } from './product/product.component';
 
-export function tokenGetter() {
-  if (typeof window !== 'undefined' && window.localStorage) {
-    return localStorage.getItem('token');
+export function tokenGetter(): string {
+  if (typeof localStorage !== 'undefined') {
+    return localStorage.getItem('token') || '';
+  } else {
+    // Handle case when localStorage is not available
+    console.error('localStorage is not available');
+    return '';
   }
-  return null;
 }
+
 
 
 @NgModule({
@@ -44,6 +49,7 @@ export function tokenGetter() {
     InfoComponent,
     ManageCategoriesComponent,
     ManageProductComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

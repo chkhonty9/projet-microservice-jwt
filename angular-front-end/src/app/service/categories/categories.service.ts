@@ -3,44 +3,53 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Category} from "../../model/category";
 import {Observable} from "rxjs";
 import {tokenGetter} from "../../app.module";
+import {Product} from "../../model/product";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
 
-  private host:string="http://localhost:8888/CATALOGUE-SERVICE";
-  token: string = tokenGetter()!;
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    Authorization: this.token,
-  });
+  private host: string = "http://localhost:8888/CATALOGUE-SERVICE/categories";
 
   constructor(private http: HttpClient) { }
 
-  save(category:Category):Observable<Category>{
-    console.log("category service : save");
-    return this.http.post<Category>(this.host+`/categories`,category, { headers: this.headers });
+  private getHeaders(): HttpHeaders {
+    const token: string = tokenGetter()!;
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: token,
+    });
   }
 
-  update(category:Category, id:string):Observable<Category>{
-    console.log("category service : update");
-     return this.http.put<Category>(`${this.host}/categories/${id}`, category, { headers: this.headers });
+  createCategory(category: Category): Observable<Category> {
+    console.log("Category service: createCategory");
+    const headers = this.getHeaders();
+    return this.http.post<Category>(this.host, category, { headers });
   }
 
-  getAll(): Observable<Category[]>{
-    console.log("category service : getAll");
-    return this.http.get<Category[]>(`${this.host}/categories`, { headers: this.headers });
+  getAllCategories(): Observable<Category[]> {
+    console.log("Category service: getAllCategories");
+    const headers = this.getHeaders();
+    return this.http.get<Category[]>(this.host, { headers });
   }
 
-  getById(id:number):Observable<Category>{
-    console.log("category service : get by id");
-    return this.http.get<Category>(`${this.host}/categories/${id}`, { headers: this.headers });
+  getCategoryById(id: string): Observable<Category> {
+    console.log("Category service: getCategoryById");
+    const headers = this.getHeaders();
+    return this.http.get<Category>(`${this.host}/${id}`, { headers });
   }
 
-  getByName(name:string):Observable<Category>{
-    console.log("category service : get by name");
-    return this.http.get<Category>(`${this.host}/categories/${name}`, { headers: this.headers });
+  deleteCategory(id: string): Observable<void> {
+    console.log("Category service: deleteCategory");
+    const headers = this.getHeaders();
+    return this.http.delete<void>(`${this.host}/${id}`, { headers });
+  }
+
+  getCategoryByName(name: string): Observable<Category> {
+    console.log("Category service: getCategoryByName");
+    const headers = this.getHeaders();
+    return this.http.get<Category>(`${this.host}/search?name=${name}`, { headers });
   }
 }

@@ -11,16 +11,20 @@ import {NewProductComponent} from "./new-product/new-product.component";
 import {NewCategoryComponent} from "./new-category/new-category.component";
 import {ManageCategoriesComponent} from "./manage-categories/manage-categories.component";
 import {ManageProductComponent} from "./manage-product/manage-product.component";
+import {ProductComponent} from "./product/product.component";
 
 const routes: Routes = [
   {path : "login", component : LoginComponent},
   {path: "register", component: SignUpComponent},
-  {path: "layout", component: LayoutComponent,
+  {
+    path: "layout", component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       {path: "home", component: HomeComponent},
       {path: "categories", component: CategoriesComponent },
-      {path: "profile", component: ProfileComponent,
+      {path: 'product', component: ProductComponent},
+      {
+        path: "profile", component: ProfileComponent,
         children: [
           { path: '', redirectTo: 'info', pathMatch: 'full' },
           {path: "info", component: InfoComponent},

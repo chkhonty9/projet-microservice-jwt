@@ -1,13 +1,15 @@
 import { Category } from './category';
 
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  promotion: boolean;
-  available: boolean;
-  description: string;
-  image: ArrayBuffer;
-  stock: number;
-  category: Category;
+export class Product {
+  id: string | null = null;
+  name: string = '';
+  price: number = 0;
+  promotion: boolean = false;
+  available: boolean = true;
+  description: string = '';
+  image: string = '';
+  stock: number = 0;
+  category: Category = new Category();
+  constructor() {
+  }
 }

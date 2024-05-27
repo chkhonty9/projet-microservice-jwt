@@ -22,10 +22,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/categories/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/actuator/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/products/**").permitAll();
-        http.authorizeRequests().antMatchers("/categories/**").hasAuthority("ADMIN");
-        http.authorizeRequests().antMatchers("/products/**").hasAuthority("ADMIN");
-        http.authorizeRequests().antMatchers("/cartItems/**").permitAll();
-        http.authorizeRequests().antMatchers("/shoppingCart/**").permitAll();
+        http.authorizeRequests().antMatchers("/categories/save").hasAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/categories/delete").hasAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/products/save").hasAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/products/delete").hasAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/cartItems/**").hasAuthority("USER");
+        http.authorizeRequests().antMatchers("/shoppingCarts/**").hasAuthority("USER");
+        http.authorizeRequests().antMatchers("/payments/**").hasAuthority("USER");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }

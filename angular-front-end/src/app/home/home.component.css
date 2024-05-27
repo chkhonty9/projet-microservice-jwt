@@ -1,0 +1,14 @@
+.icon-hover:hover {
+  border-color: #b04af6 !important;
+  background-color: white !important;
+}
+
+
+.btn-primary{
+  background-color: #a83eee;
+  border-color: #a83eee;
+}
+
+.icon-hover:hover i {
+  color: #b04af6 !important;
+}
