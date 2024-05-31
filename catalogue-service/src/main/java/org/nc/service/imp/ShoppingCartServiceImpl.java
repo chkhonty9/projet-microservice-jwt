@@ -31,9 +31,19 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
+    public List<ShoppingCartDTO> findByUserId(Long userId) {
+        return this.shoppingCartRepository.findByUserId(userId).stream().map(shoppingCart -> this.shoppingCartMapper.fromShoppingCart(shoppingCart)).toList();
+    }
+
+    @Override
     public ShoppingCartDTO findOne(String id) {
         System.out.println("Inside findOne method of ShoppingCartService :");
         return this.shoppingCartMapper.fromShoppingCart(this.shoppingCartRepository.findById(id).orElse(null));
+    }
+
+    @Override
+    public ShoppingCartDTO findByUserIdAndStatusIsFalse(Long userId) {
+        return this.shoppingCartMapper.fromShoppingCart(this.shoppingCartRepository.findByUserIdAndStatusIsFalse(userId));
     }
 
     @Override

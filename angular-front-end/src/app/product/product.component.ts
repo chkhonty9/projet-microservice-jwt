@@ -3,6 +3,9 @@ import {ProductsService} from "../service/product/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Product} from "../model/product";
 import {Category} from "../model/category";
+import {CartItem} from "../model/cart-item";
+import {CartItemsService} from "../service/cart-item/cart-items.service";
+import {ShoppingCartService} from "../service/shopping-cart/shopping-cart.service";
 
 @Component({
   selector: 'app-product',
@@ -11,18 +14,23 @@ import {Category} from "../model/category";
 })
 export class ProductComponent implements OnInit{
 
+  cartItem : CartItem = new CartItem();
   product: Product = new Product();
   products: Product[] = [];
+  quantity : number = 0;
 
-  constructor(private route: ActivatedRoute,private productService : ProductsService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private productService : ProductsService,
+    private cartItemService : CartItemsService,
+    private shoppingCartService : ShoppingCartService
+    ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      this.getProduct(params['id'] ?? '');
+      this.getProduct(params['id'] ?? ' ');
+      this.getProducts(this.product.category);
     });
-
-    this.getProducts(this.product.category);
   }
 
   private getProduct(productId: string) {
@@ -44,6 +52,7 @@ export class ProductComponent implements OnInit{
       error => console.log('error : '+error)
     )
   }
+
 
 
 

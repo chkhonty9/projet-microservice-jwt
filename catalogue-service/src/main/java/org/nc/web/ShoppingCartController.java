@@ -29,6 +29,19 @@ public class ShoppingCartController {
         ShoppingCartDTO shoppingCart = shoppingCartService.findOne(id);
         return shoppingCart != null ? ResponseEntity.ok(shoppingCart) : ResponseEntity.notFound().build();
     }
+    @GetMapping("/notPayed/{id}")
+    public ResponseEntity<ShoppingCartDTO> getShoppingCartNotPayed(@PathVariable Long id) {
+        System.out.println("inside getShoppingCart controller: ");
+        ShoppingCartDTO shoppingCart = shoppingCartService.findByUserIdAndStatusIsFalse(id);
+        return shoppingCart != null ? ResponseEntity.ok(shoppingCart) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<ShoppingCartDTO>> getShoppingCartByUser(@PathVariable Long id) {
+        System.out.println("inside getShoppingCart controller: ");
+        List<ShoppingCartDTO> shoppingCarts = shoppingCartService.findByUserId(id);
+        return shoppingCarts != null ? ResponseEntity.ok(shoppingCarts) : ResponseEntity.notFound().build();
+    }
 
     @GetMapping
     public ResponseEntity<List<ShoppingCartDTO>> getAllShoppingCarts() {

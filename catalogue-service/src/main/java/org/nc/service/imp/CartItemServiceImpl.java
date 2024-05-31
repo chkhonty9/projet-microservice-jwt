@@ -3,7 +3,9 @@ package org.nc.service.imp;
 import lombok.AllArgsConstructor;
 import org.nc.dao.CartItemRepository;
 import org.nc.dto.CartItemDTO;
+import org.nc.dto.ProductDTO;
 import org.nc.mapper.CartItemMapper;
+import org.nc.mapper.ProductMapper;
 import org.nc.service.CartItemService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,7 @@ public class CartItemServiceImpl implements CartItemService {
 
     private CartItemRepository cartItemRepository;
     private CartItemMapper cartItemMapper;
+    private ProductMapper productMapper;
 
     @Override
     public CartItemDTO save(CartItemDTO cartItemDTO) {
@@ -34,6 +37,16 @@ public class CartItemServiceImpl implements CartItemService {
     public List<CartItemDTO> findAll() {
         System.out.println("Inside findAll method cart item service: ");
         return this.cartItemRepository.findAll().stream().map(cartItem -> this.cartItemMapper.fromCartItem(cartItem)).toList();
+    }
+
+    @Override
+    public List<CartItemDTO> findByUserId(Long userId) {
+        return this.cartItemRepository.findByUserId(userId).stream().map(cartItem -> this.cartItemMapper.fromCartItem(cartItem)).toList();
+    }
+
+    @Override
+    public List<CartItemDTO> findByProduct(ProductDTO productDTO) {
+        return this.cartItemRepository.findByProduct(this.productMapper.toProduct(productDTO)).stream().map(cartItem -> this.cartItemMapper.fromCartItem(cartItem)).toList();
     }
 
     @Override

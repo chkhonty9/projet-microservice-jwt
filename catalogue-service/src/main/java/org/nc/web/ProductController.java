@@ -66,6 +66,17 @@ public class ProductController {
     }
     @GetMapping("/contain/{name}")
     public ResponseEntity<List<ProductDTO>> getProductsByNameContaining(@PathVariable String name) {
+        System.out.println("inside getProducts by name controller : ");
         return ResponseEntity.ok(productService.findByNameContaining(name));
+    }
+    @GetMapping("/epuise")
+    public ResponseEntity<List<ProductDTO>> getProductsEpuise() {
+        System.out.println("inside getProducts not available controller : ");
+        return ResponseEntity.ok(productService.findByAvailableIsFalse());
+    }
+    @GetMapping("/promo")
+    public ResponseEntity<List<ProductDTO>> getProductsPromo() {
+        System.out.println("inside getProducts promo controller : ");
+        return ResponseEntity.ok(productService.findByPromotionIsTrue());
     }
 }

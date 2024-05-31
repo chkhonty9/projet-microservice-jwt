@@ -71,4 +71,16 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.host}/contain/${name}`, { headers });
   }
 
+  getProductsEpuise(): Observable<Product[]> {
+    console.log("Product service: getProducts not available");
+    const headers = this.getHeaders();
+    return this.http.get<Product[]>(`${this.host}/epuise`, { headers });
+  }
+
+  getProductPromo():Observable<Product[]> {
+  console.log("Product service: getProducts promo");
+  const headers = this.getHeaders();
+  return this.http.get<Product[]>(`${this.host}/promo`, { headers });
+}
+
 }

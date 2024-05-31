@@ -18,6 +18,7 @@ public class CartItem {
     private int quantity;
     private Date addedAt;
     private double price;
+    private Long userId;
 
     @DBRef
     private Product product;

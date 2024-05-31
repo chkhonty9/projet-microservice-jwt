@@ -14,5 +14,7 @@ public interface ProductService {
     List<ProductDTO> findByName(String name);
     List<ProductDTO> findByCategory(CategoryDTO categoryDTO);
     List<ProductDTO> findByNameContaining(String name);
+    List<ProductDTO> findByAvailableIsFalse();
+    List<ProductDTO> findByPromotionIsTrue();
 
 }

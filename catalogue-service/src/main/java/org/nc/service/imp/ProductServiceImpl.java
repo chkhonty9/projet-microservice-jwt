@@ -59,6 +59,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> findByNameContaining(String name) {
-        return this.productRepository.findByNameContaining(name).stream().map(product -> productMapper.fromProduct(product)).toList();
+        return this.productRepository.findByNameContainingIgnoreCase(name).stream().map(product -> productMapper.fromProduct(product)).toList();
+    }
+
+    @Override
+    public List<ProductDTO> findByAvailableIsFalse() {
+        return this.productRepository.findByAvailableIsFalse().stream().map(product -> productMapper.fromProduct(product)).toList();
+    }
+
+    @Override
+    public List<ProductDTO> findByPromotionIsTrue() {
+        return this.productRepository.findByPromotionIsTrue().stream().map(product -> productMapper.fromProduct(product)).toList();
     }
 }

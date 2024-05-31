@@ -6,6 +6,7 @@ export class CartItem {
   addedAt: Date = new Date();
   price: number = 0;
   product: Product = new Product();
+  userId: number = 0;
   constructor() {
   }
 }
