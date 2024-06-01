@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -10,14 +9,11 @@ export class ProfileComponent implements OnInit {
   isAdmin: boolean = false;
   actions: Array<any> = [];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const isAdminStored = localStorage.getItem('isAdmin');
-      this.isAdmin = isAdminStored === 'true';
-      console.log(`isAdmin: ${this.isAdmin}`);
-    }
+    const isAdminStored = localStorage.getItem('isAdmin');
+    this.isAdmin = isAdminStored === 'true';
+    console.log(`isAdmin: ${this.isAdmin}`);
     this.initializeActions();
   }
 

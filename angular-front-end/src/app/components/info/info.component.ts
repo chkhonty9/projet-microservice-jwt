@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {UserService} from "../service/user/user.service";
-import {User} from "../model/user";
 import {NgForm} from "@angular/forms";
+import {UserService} from "../../service/user/user.service";
+import {User} from "../../model/user";
 
 @Component({
   selector: 'app-info',

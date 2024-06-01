@@ -1,0 +1,37 @@
+<!-- header -->
+<header class="header">
+  <div class="container">
+    <h1 class="logo">Promo Product</h1>
+  </div>
+</header>
+<!-- header -->
+<!-- product -->
+<section class="product-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let product of products">
+        <div class="card product-card" routerLink="/layout/product" [queryParams]="{id : product.id}">
+          <a routerLink="/layout/product" [queryParams]="{id : product.id}">
+            <div class="promotion-badge">
+              <span class="badge bg-danger">Promotion</span>
+            </div>
+            <img [src]="product.image" class="card-img-top product-image" alt="{{ product.name }}">
+          </a>
+          <div class="card-body">
+            <a class="wishlist-btn" href="#">
+              <i class="bi-heart fa-lg text-secondary"></i>
+            </a>
+            <h5 class="card-title product-title">{{ product.name }}</h5>
+            <p class="card-text product-price">
+              <span *ngIf="product.promotion" class="text-danger fw-bold">{{ product.price }} MAD</span>
+              <span *ngIf="product.promotion" class="text-decoration-line-through small">{{ product.price + 1000 }} MAD</span>
+              <span *ngIf="!product.promotion">{{ product.price }} MAD</span>
+            </p>
+            <p class="card-text product-description">{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- product -->

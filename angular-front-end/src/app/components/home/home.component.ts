@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ProductsService} from "../service/product/products.service";
-import {CategoriesService} from "../service/categories/categories.service";
-import {Product} from "../model/product";
-import {Category} from "../model/category";
-import {Router} from "@angular/router";
+import {Product} from "../../model/product";
+import {Category} from "../../model/category";
+import {ProductsService} from "../../service/product/products.service";
+import {CategoriesService} from "../../service/categories/categories.service";
 
 @Component({
   selector: 'app-home',

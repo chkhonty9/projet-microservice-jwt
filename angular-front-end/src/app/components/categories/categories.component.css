@@ -1,0 +1,42 @@
+/* Search Header */
+.header-search {
+  border-bottom: 1px solid #ccc;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+.header-search strong {
+  display: block;
+  padding: 10px 0;
+}
+
+.header-search .filter-label {
+  margin-right: 10px;
+}
+
+.header-search .form-select {
+  width: 600px; /* Adjust as needed */
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Adjust as needed to cover the viewport height */
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #333; /* Adjust spinner color as needed */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

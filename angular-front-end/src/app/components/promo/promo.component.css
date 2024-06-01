@@ -1,0 +1,69 @@
+/* Header */
+.header {
+  background-color: #ffffff;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Product Section */
+.product-section {
+  padding: 40px 0;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.product-card:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.promotion-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 16px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2; /* Limit to two lines */
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #999;
+}
+
+.wishlist-btn:hover {
+  color: #ff6600;
+}

@@ -32,7 +32,7 @@
   <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto justify-content-between">
       <li class="nav-item h5" *ngFor="let action of actions">
-        <a (click)="setCurrentAction(action)" [routerLink]="action.route" [class]="currentAction == action ? 'nav-link active' : 'nav-link'">
+        <a (click)="setCurrentAction(action)" [routerLink]="action.route" [class]="currentAction == action ? 'nav-link active' : 'nav-link'" [queryParams]="{id : ''}">
           {{action.title}}
         </a>
       </li>

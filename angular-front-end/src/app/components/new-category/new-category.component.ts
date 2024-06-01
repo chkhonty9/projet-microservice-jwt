@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {CategoriesService} from "../service/categories/categories.service";
-import {Category} from "../model/category";
 import { v4 as uuidv4 } from 'uuid';
+import {Category} from "../../model/category";
+import {CategoriesService} from "../../service/categories/categories.service";
 
 @Component({
   selector: 'app-new-category',

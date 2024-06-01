@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from "../service/product/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Product} from "../model/product";
-import {Category} from "../model/category";
-import {CartItem} from "../model/cart-item";
-import {CartItemsService} from "../service/cart-item/cart-items.service";
-import {ShoppingCartService} from "../service/shopping-cart/shopping-cart.service";
+import {CartItem} from "../../model/cart-item";
+import {Product} from "../../model/product";
+import {ProductsService} from "../../service/product/products.service";
+import {CartItemsService} from "../../service/cart-item/cart-items.service";
+import {ShoppingCartService} from "../../service/shopping-cart/shopping-cart.service";
+import {Category} from "../../model/category";
+
 
 @Component({
   selector: 'app-product',

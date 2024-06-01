@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../model/product";
-import {ProductsService} from "../service/product/products.service";
-import {CategoriesService} from "../service/categories/categories.service";
-import {Category} from "../model/category";
 import { v4 as uuidv4 } from 'uuid';
+import {Product} from "../../model/product";
+import {Category} from "../../model/category";
+import {ProductsService} from "../../service/product/products.service";
+import {CategoriesService} from "../../service/categories/categories.service";
 
 @Component({
   selector: 'app-new-product',
