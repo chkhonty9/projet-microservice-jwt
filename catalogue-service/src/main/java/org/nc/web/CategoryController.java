@@ -44,9 +44,9 @@ public class CategoryController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<CategoryDTO> getCategoryByName(@RequestParam String name) {
+    public ResponseEntity<List<CategoryDTO>> getCategoryByName(@RequestParam String name) {
         System.out.println("getCategoryByName called of category controller :");
-        CategoryDTO category = categoryService.findByName(name);
-        return category != null ? ResponseEntity.ok(category) : ResponseEntity.notFound().build();
+        List<CategoryDTO> categories = categoryService.findByName(name);
+        return ResponseEntity.ok(categories);
     }
 }

@@ -1,1 +1,47 @@
-<p>manage-product works!</p>
+<!-- product -->
+<div class="m-5 justify-content-center">
+  <div class="card border shadow-0">
+    <div class="m-4">
+      <h4 class="card-title mb-4">Manage Products </h4>
+      <form class="form-inline my-2 my-lg-0" >
+        <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="wordTosearch" name="search" (ngModelChange)="getProduct()" (input)="onInputChange($event)">
+        <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit" (click)="getProduct()">Search</button>
+        <button
+          class="btn btn-outline-success my-2 my-sm-0 search-button"
+          type="submit"
+          (click)="getEpuiseProducts()"
+        >Unavailable</button>
+      </form>
+      <div class="row gy-3 mt-4" *ngFor="let product of products">
+        <div class="col-lg-4 align-content-center">
+          <div class="me-lg-5">
+            <div class="d-flex">
+              <img [src]="product.image" class="w-25" />
+              <div class="ms-3">
+                <a routerLink="/layout/product" [queryParams]="{id : product.id}" class="nav-link">{{ product.name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+          <div class="mt-3 mt-lg-0 m-2">
+            <h6>
+              <span *ngIf="product.promotion" class="text-danger fw-bold">{{ product.price}} MAD</span> <br>
+              <span *ngIf="product.promotion" class="text-decoration-line-through small">{{ product.price + 1000 }} MAD</span>
+              <span *ngIf="!product.promotion">  {{ product.price }} MAD</span>
+            </h6>
+          </div>
+        </div>
+        <div class="col-lg-1 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+          <h6>Stock : {{ product.stock }}</h6>
+        </div>
+        <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+          <div class="float-md-end">
+            <a class="btn btn-light border text-danger icon-hover-danger" (click)="deleteItem(product)">Remove</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- product -->

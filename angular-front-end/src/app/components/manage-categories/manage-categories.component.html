@@ -1,1 +1,33 @@
+<!-- Category-->
+<div class="m-5 justify-content-center">
+  <div class="card border shadow-0">
+    <div class="m-4">
+      <h4 class="card-title mb-4">Manage Categories</h4>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="wordTosearch" name="search" (ngModelChange)="getCategory()" (input)="onInputChange($event)">
+        <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit" (click)="getCategory()">Search</button>
+      </form>
+      <div class="row gy-3 mt-4" *ngFor="let category of categories">
+        <div class="col-lg align-content-center">
+          <div class="me-lg">
+            <div class="d-flex">
+              <img [src]="category.image" class="w-50" />
+              <div class="ms-3 m-3">
+                <h4>
+                  <a routerLink="/layout/categories" [queryParams]="{id : category.id}" class="nav-link">{{ category.name }}</a> <br>
+                </h4>
+                <p class="description">{{ category.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+          <div class="float-md-end">
+            <a class="btn btn-light border text-danger icon-hover-danger">Remove</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

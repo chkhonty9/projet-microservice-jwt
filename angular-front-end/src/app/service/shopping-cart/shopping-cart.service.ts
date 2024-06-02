@@ -101,6 +101,22 @@ export class ShoppingCartService{
       return true;
   }
 
+  onQuantityChange(item: CartItem){
+    let index = this.cart.cartItems.findIndex(
+      x => x.product.id == item.product.id
+    );
+    this.cart.cartItems[index].quantity = item.quantity;
+    this.saveCart();
+  }
+
+  deleteProduct(item: CartItem) {
+    let index = this.cart.cartItems.findIndex(
+      x => x.product.id == item.product.id
+    );
+    this.cart.cartItems.splice(index,1);
+    this.saveCart();
+  }
+
   saveCart(){
     console.log('saving cart');
     console.log('cart user id ', this.cart.userId);

@@ -42,8 +42,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDTO findByName(String categoryName) {
+    public List<CategoryDTO> findByName(String categoryName) {
         System.out.println("Inside findByName method category service: ");
-        return this.categoryMapper.fromCategory(this.categoryRepository.findByName(categoryName));
+        return this.categoryRepository.findByNameContainingIgnoreCase(categoryName).stream().map(category -> this.categoryMapper.fromCategory(category)).toList();
     }
 }

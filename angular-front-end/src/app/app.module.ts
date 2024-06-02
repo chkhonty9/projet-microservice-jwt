@@ -24,6 +24,7 @@ import {ProductComponent} from "./components/product/product.component";
 import {PromoComponent} from "./components/promo/promo.component";
 import {SearchComponent} from "./components/search/search.component";
 import { CartComponent } from './components/cart/cart.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export function tokenGetter(): string {
   if (typeof localStorage !== 'undefined') {
@@ -75,7 +76,8 @@ export function tokenGetter(): string {
     UserService,
     provideClientHydration(),
     AuthenticationService,
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

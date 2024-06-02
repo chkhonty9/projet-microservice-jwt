@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import {tokenGetter} from "../../app.module";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Product} from "../../model/product";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Category} from "../../model/category";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+  private _products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  public readonly products$ = this._products.asObservable();products : Product[] = [];
 
   private host: string = "http://localhost:8888/CATALOGUE-SERVICE/products";
 
@@ -78,9 +80,35 @@ export class ProductsService {
   }
 
   getProductPromo():Observable<Product[]> {
-  console.log("Product service: getProducts promo");
-  const headers = this.getHeaders();
-  return this.http.get<Product[]>(`${this.host}/promo`, { headers });
-}
+    console.log("Product service: getProducts promo");
+    const headers = this.getHeaders();
+    return this.http.get<Product[]>(`${this.host}/promo`, { headers });
+  }
+
+  getProduct(word : string){
+    this.getProductsContain(word).subscribe(
+      products => {
+        this.updateProducts(products);
+      },
+      error => {
+        console.log('error : ' + error);
+        this.getProducts();
+      }
+    )
+  }
+
+
+  getProducts(){
+    this.getAllProducts().subscribe(
+      products => {
+        this.updateProducts(products);
+      },
+      error => console.log('error : '+error)
+    )
+  }
+
+  updateProducts(newProducts: Product[]): void {
+    this._products.next(newProducts);
+  }
 
 }

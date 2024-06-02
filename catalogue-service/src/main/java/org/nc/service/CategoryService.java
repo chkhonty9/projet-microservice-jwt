@@ -10,5 +10,5 @@ public interface CategoryService {
     List<CategoryDTO> findAll();
     CategoryDTO findOne(String id);
     void delete(String id);
-    CategoryDTO findByName(String categoryName);
+    List<CategoryDTO> findByName(String categoryName);
 }

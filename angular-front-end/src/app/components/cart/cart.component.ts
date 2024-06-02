@@ -25,6 +25,10 @@ export class CartComponent implements OnInit {
     console.log('init cart component cart : ', this.cart);
   }
 
+  deleteItem(item : CartItem){
+    this.cartService.deleteProduct(item);
+  }
+
 
   totalPrice(){
     let total = 0;
@@ -34,4 +38,8 @@ export class CartComponent implements OnInit {
     return total;
   }
 
+  onQuantityChange(item: CartItem) {
+    console.log('Quantity changed:', item.quantity);
+    this.cartService.onQuantityChange(item);
+  }
 }

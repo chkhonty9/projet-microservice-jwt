@@ -47,9 +47,9 @@ export class CategoriesService {
     return this.http.delete<void>(`${this.host}/${id}`, { headers });
   }
 
-  getCategoryByName(name: string): Observable<Category> {
+  getCategoryByName(name: string): Observable<Category[]> {
     console.log("Category service: getCategoryByName");
     const headers = this.getHeaders();
-    return this.http.get<Category>(`${this.host}/search?name=${name}`, { headers });
+    return this.http.get<Category[]>(`${this.host}/search?name=${name}`, { headers });
   }
 }
