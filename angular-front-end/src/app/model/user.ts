@@ -1,12 +1,13 @@
 import {Role} from "./role";
 
-export interface User {
-  id: number,
-  username: string,
-  password: string,
-  name: string,
-  email: string,
-  address: string ,
-  phoneNumber: string ,
-  roles: Role[]
+export class User {
+  id: number | null = null;
+  username: string = '';
+  password: string = '';
+  name: string = '';
+  email: string= '';
+  address: string = '';
+  phoneNumber: string = '';
+  roles: Role[]= []
+  constructor() {}
 }

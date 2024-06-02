@@ -57,7 +57,7 @@
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let product of products">
         <div class="card my-2 shadow-0">
-          <a routerLink="/layout/product" [queryParams]="{id : product.id}">
+          <a (click)="navigateToProduct(product.id!)"> <!--[queryParams]="{id : product.id}"-->
             <div class="mask" style="height: 50px;">
               <div class="d-flex justify-content-start align-items-start h-100 m-2">
                 <h6><span class="badge bg-danger pt-1">New</span></h6>

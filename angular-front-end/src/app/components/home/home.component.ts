@@ -4,6 +4,7 @@ import {Product} from "../../model/product";
 import {Category} from "../../model/category";
 import {ProductsService} from "../../service/product/products.service";
 import {CategoriesService} from "../../service/categories/categories.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit{
   categories: Category[] = [];
 
   constructor(
-    private http: HttpClient,
+    private router: Router,
     private productService: ProductsService ,
     private categoryService: CategoriesService,
   ) {}
@@ -44,6 +45,10 @@ export class HomeComponent implements OnInit{
         this.products = resp;
       }
     )
+  }
+
+  navigateToProduct(productId: string) {
+    this.router.navigate(['/layout/product'], { queryParams: { id: productId } });
   }
 
 }

@@ -14,13 +14,13 @@ export class InfoComponent {
   passwordsMatch: boolean = true;
 
   constructor(private userService: UserService) {
-    this.currentUser = this.userService.getCurrentUser();
+    this.currentUser = JSON.parse(localStorage.getItem('user')!);
   }
 
   onSubmit(): void {
     console.log('info component : on submit');
     this.currentUser.password = this.confirmPassword;
-    this.userService.updateUser(this.currentUser.id, this.currentUser).subscribe(
+    this.userService.updateUser(this.currentUser.id!, this.currentUser).subscribe(
       resp =>{
         console.log("user update : " + resp.username);
       },

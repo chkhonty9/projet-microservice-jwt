@@ -21,7 +21,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public ShoppingCartDTO save(ShoppingCartDTO shoppingCartDTO) {
         System.out.println("Inside save method of ShoppingCartService :");
-        return this.shoppingCartMapper.fromShoppingCart(this.shoppingCartMapper.toShoppingCart(shoppingCartDTO));
+        System.out.println("cart : " + shoppingCartDTO.toString());
+        return this.shoppingCartMapper.fromShoppingCart(this.shoppingCartRepository.save(this.shoppingCartMapper.toShoppingCart(shoppingCartDTO)));
     }
 
     @Override

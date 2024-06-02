@@ -55,8 +55,8 @@ export class AuthenticationService {
     this.userService.user(username).subscribe(
       user => {
         console.log('resp : ' + user.id);
-        this.userService.setCurrentUser(user);
-        console.log('user email : ' + this.userService.getCurrentUser().email);
+        localStorage.setItem('user', JSON.stringify(user));
+        //console.log('user email : ' + this.userService.getCurrentUser().email);
       },
       err => {
         console.log('error : ', err);

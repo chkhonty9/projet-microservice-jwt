@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../service/auth/authentication.service";
+import {ShoppingCartService} from "../../service/shopping-cart/shopping-cart.service";
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +8,7 @@ import {AuthenticationService} from "../../service/auth/authentication.service";
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent implements OnInit{
-  constructor(private authService: AuthenticationService,) {
+  constructor(private authService: AuthenticationService,private cartService: ShoppingCartService) {
   }
 
   ngOnInit(): void {

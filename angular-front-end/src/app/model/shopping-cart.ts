@@ -1,6 +1,6 @@
 import { CartItem } from './cart-item';
 
-export class ShoppingCart {
+export class ShoppingCart{
   id: string | null = null;
   userId: number = 0;
   total: number = 0;

@@ -14,6 +14,7 @@ import {NewCategoryComponent} from "./components/new-category/new-category.compo
 import {NewProductComponent} from "./components/new-product/new-product.component";
 import {ManageCategoriesComponent} from "./components/manage-categories/manage-categories.component";
 import {ManageProductComponent} from "./components/manage-product/manage-product.component";
+import {CartComponent} from "./components/cart/cart.component";
 
 const routes: Routes = [
   {path : "login", component : LoginComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path: 'product', component: ProductComponent},
       {path: 'promo', component: PromoComponent},
       {path: 'search', component: SearchComponent},
+      {path: 'cart', component: CartComponent},
       {
         path: "profile", component: ProfileComponent,
         children: [

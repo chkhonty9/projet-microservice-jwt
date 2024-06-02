@@ -23,6 +23,7 @@ import {ManageProductComponent} from "./components/manage-product/manage-product
 import {ProductComponent} from "./components/product/product.component";
 import {PromoComponent} from "./components/promo/promo.component";
 import {SearchComponent} from "./components/search/search.component";
+import { CartComponent } from './components/cart/cart.component';
 
 export function tokenGetter(): string {
   if (typeof localStorage !== 'undefined') {
@@ -54,6 +55,7 @@ export function tokenGetter(): string {
     ProductComponent,
     PromoComponent,
     SearchComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

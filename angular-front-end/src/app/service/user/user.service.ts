@@ -9,7 +9,6 @@ import {tokenGetter} from "../../app.module";
 })
 export class UserService {
   private host:string="http://localhost:8888/USER-MANAGER-SERVICE";
-  private currentUser!:User;
   token: string = tokenGetter()!;
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -29,11 +28,5 @@ export class UserService {
     return this.http.put<User>(this.host+`/user/update/${id}`, user, { headers: this.headers });
   }
 
-  setCurrentUser(user:User){
-    this.currentUser = user;
-  }
-  getCurrentUser(){
-    return this.currentUser;
-  }
 
 }
