@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,9 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 export class ProfileComponent implements OnInit {
   isAdmin: boolean = false;
   actions: Array<any> = [];
+
+  constructor( private router: Router) {
+  }
 
 
   ngOnInit(): void {
@@ -31,5 +35,10 @@ export class ProfileComponent implements OnInit {
 
   setCurrentAction(action: any) {
     this.currentAction = action;
+  }
+
+  isRoute(route:any){
+    return this.router.url.includes(route);
+
   }
 }

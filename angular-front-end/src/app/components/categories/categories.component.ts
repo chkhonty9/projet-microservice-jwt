@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {CartItemsService} from "../../service/cart-item/cart-items.service";
-import {ShoppingCartService} from "../../service/shopping-cart/shopping-cart.service";
 import {CategoriesService} from "../../service/categories/categories.service";
 import {Category} from "../../model/category";
 import {ProductsService} from "../../service/product/products.service";
@@ -17,7 +15,6 @@ export class CategoriesComponent implements OnInit{
   categoryId: string = '';
   products: Product[] = [];
   categories: Category[] = [];
-  isLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +36,10 @@ export class CategoriesComponent implements OnInit{
 
   }
   loadProducts() {
-    this.isLoading = true;
+    if(this.categoryId == ''){
+      this.getProducts(this.categories[1].id!);
+
+    }
     if (this.categoryId !== '') {
       this.getProducts(this.categoryId);
     } else if (this.categories.length > 0) {
@@ -52,11 +52,9 @@ export class CategoriesComponent implements OnInit{
       products => {
         console.log('products = '+products);
         this.products = products;
-        this.isLoading = false;
       },
       error => {
         console.log('error : ' + error);
-        this.isLoading = false;
       }
     )
   }
@@ -66,6 +64,7 @@ export class CategoriesComponent implements OnInit{
       categories => {
         console.log('categories : category component ');
         this.categories = categories;
+        this.getProducts(this.categories[0].id!);
       },
       error => console.log('error : '+error)
     )

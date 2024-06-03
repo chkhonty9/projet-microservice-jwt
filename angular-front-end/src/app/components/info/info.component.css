@@ -1,25 +1,22 @@
 .container {
-  margin-top: 10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-  background-color: #9f6ac5;
-  color: #fff;
-  padding: 15px;
-}
-
-.card-title {
-  margin: 0;
+  background-color: #007bff;
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card-body {
-  padding: 20px;
+  padding: 30px;
 }
 
 .form-group {
@@ -30,11 +27,29 @@ label {
   font-weight: bold;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.text-danger {
+  color: #dc3545;
+  margin-top: 5px;
+}
+
 .btn-primary {
-  background-color: #a83eee;
+  background-color: #007bff;
   border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #fff;
 }
 
 .btn-primary:hover {
-  background-color: #b04af6;
+  background-color: #0056b3;
 }

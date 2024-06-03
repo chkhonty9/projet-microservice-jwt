@@ -1,9 +1,10 @@
 .container {
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .form-group {
@@ -14,36 +15,26 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
-input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #a83eee;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.btn-primary:disabled {
+  background-color: #b8daff;
+  border-color: #b8daff;
 }
 
-button:hover {
-  background-color: #9030d0;
+.btn-primary:disabled:hover {
+  background-color: #b8daff;
+  border-color: #b8daff;
 }
 
-p {
-  margin-top: 5px;
-  font-style: italic;
+.btn-primary:focus {
+  box-shadow: none;
 }

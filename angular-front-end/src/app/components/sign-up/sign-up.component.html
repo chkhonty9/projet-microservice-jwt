@@ -1,1 +1,60 @@
-<p>sign-up works!</p>
+<!-- sign-up.component.html -->
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <img src="assets/images/shopping-rafiki.svg" alt="Image" class="img-fluid" width="500px" height="500px">
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
+              <h2>Sign Up for <strong>Store Nouhaila</strong></h2>
+              <p class="mb-4">Join us to explore the latest products and exclusive offers tailored just for you.</p>
+            </div>
+            <form [formGroup]="signupForm" (ngSubmit)="onRegister()">
+              <div class="row">
+                <div class="col">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" formControlName="username" placeholder="Username">
+                    <label for="username">Username</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-floating mb-3 col">
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Full Name">
+                    <label for="name">Full Name</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                <label for="password">Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="repassword" formControlName="repassword" placeholder="Confirm Password">
+                <label for="repassword">Confirm Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                <label for="email">Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="address" formControlName="address" placeholder="Address">
+                <label for="address">Address</label>
+              </div>
+              <div class="form-floating mb-4">
+                <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number">
+                <label for="phoneNumber">Phone Number</label>
+              </div>
+              <div class="d-flex mb-4">
+                <a routerLink="/login"  class="forgot-pass ml-auto">you already have an account?</a>
+              </div>
+              <button [disabled]="signupForm.invalid" class="btn btn-primary btn-block w-100">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

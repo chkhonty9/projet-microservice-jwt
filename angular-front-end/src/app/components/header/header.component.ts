@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../service/product/products.service";
-import {Product} from "../../model/product";
 import {Router} from "@angular/router";
 
 @Component({
@@ -55,5 +54,9 @@ export class HeaderComponent implements OnInit{
 
   navigateToSearch(): void {
     this.router.navigate(['/layout/search']);
+  }
+  isRoute(route:any){
+    return this.router.url.includes(route);
+
   }
 }

@@ -3,7 +3,7 @@
   padding: 15px 20px;
   border-bottom: 1px solid #e0e0e0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #a83eee;
+  color: rgba(5, 140, 248, 0.9);
 }
 
 .card-header .d-flex {
@@ -21,7 +21,7 @@
 
 .card-header .input-group-text {
   border-radius: 0 25px 25px 0;
-  background-color: #a83eee;
+  background-color: rgba(5, 140, 248, 0.9);
   color: white;
 }
 
@@ -57,7 +57,7 @@
 
 .navbar-nav .nav-link {
   font-size: 1rem;
-  color: #d49cfa;
+  color: rgba(131, 218, 245, 0.9);
   padding: 10px 15px;
   border-radius: 25px;
   transition: background-color 0.3s, color 0.3s;
@@ -66,5 +66,5 @@
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
-  color: #a83eee;
+  color: rgba(5, 140, 248, 0.9);
 }

@@ -1,14 +1,72 @@
-.icon-hover:hover {
-  border-color: #b04af6 !important;
-  background-color: white !important;
+.container {
+  max-width: 1200px;
+  margin: auto;
 }
 
-
-.btn-primary{
-  background-color: #a83eee;
-  border-color: #a83eee;
+.mb-4 {
+  margin-bottom: 1.5rem !important;
 }
 
-.icon-hover:hover i {
-  color: #b04af6 !important;
+.card {
+  border: 1px solid #dee4ea;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #6c757d;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .mask {
+  opacity: 1;
+}
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+.btn-light.border {
+  border-color: #e9ecef;
+}
+
+.btn-light.border:hover {
+  background-color: #f8f9fa;
 }

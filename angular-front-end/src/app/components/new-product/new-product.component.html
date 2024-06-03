@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Create New Product</h2>
+  <h2>New Product</h2>
   <form (submit)="save()">
     <div class="form-group">
       <label for="name">Name:</label>
@@ -39,6 +39,9 @@
       <label for="stock">Stock:</label>
       <input type="number" class="form-control" id="stock" [(ngModel)]="product.stock" name="stock" required>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary"
+            [disabled]="!product.name || !product.description || !product.stock || !product.price || !product.image || !product.category">
+      Save
+    </button>
   </form>
 </div>

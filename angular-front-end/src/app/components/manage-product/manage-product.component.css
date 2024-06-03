@@ -1,3 +1,7 @@
+span{
+  font-size: 15px;
+}
+
 /* General form styling */
 .form-inline {
   display: flex;

@@ -1,42 +1,73 @@
-/* Search Header */
+/* Search header */
 .header-search {
-  border-bottom: 1px solid #ccc;
-  margin: 20px 0;
-  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
 
-.header-search strong {
-  display: block;
-  padding: 10px 0;
+.header-search select {
+  max-width: 200px;
 }
 
-.header-search .filter-label {
-  margin-right: 10px;
+/* Product card */
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.header-search .form-select {
-  width: 600px; /* Adjust as needed */
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh; /* Adjust as needed to cover the viewport height */
+.card img {
+  transition: transform 0.3s ease;
 }
 
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #333; /* Adjust spinner color as needed */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
+.card:hover img {
+  transform: scale(1.1);
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.card-body {
+  padding: 1.5rem;
 }
 
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #666;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-light {
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn-light:hover {
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.icon-hover i:hover {
+  color: #dc3545;
+}

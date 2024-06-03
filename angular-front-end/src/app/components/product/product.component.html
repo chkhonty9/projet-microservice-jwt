@@ -13,10 +13,11 @@
           <span *ngIf="!product.promotion">  {{ product.price }} MAD</span>
           <div class="mask" style="height: 50px;" *ngIf="product.promotion">
             <div class="d-flex justify-content-start align-items-start h-100 m-2">
-              <h6><span class="badge bg-danger pt-1">Promotion</span></h6>
+              <h5><span class="badge bg-danger pt-1">Promotion</span></h5>
             </div>
           </div>
         </div>
+        <br>
         <p class="lead">{{ product.description }}</p>
         <div class="d-flex">
           <input class="form-control text-center me-3" id="inputQuantity" type="number" min="0" [max]="product.stock" style="max-width: 5rem" placeholder="0" [(ngModel)]="quantity"/>

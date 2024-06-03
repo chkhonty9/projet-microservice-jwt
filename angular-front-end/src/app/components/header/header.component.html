@@ -16,7 +16,7 @@
         <i class="bi bi-heart-fill"></i> WISHLIST
       </div>
       <div class="p-2">
-        USD
+        MAD
       </div>
       <div class="p-2" routerLink="/layout/cart">
         <i class="bi bi-cart-fill" ></i> Cart
@@ -32,7 +32,7 @@
   <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto justify-content-between">
       <li class="nav-item h2" *ngFor="let action of actions">
-        <a (click)="setCurrentAction(action)" [routerLink]="action.route" [class]="currentAction == action ? 'nav-link active' : 'nav-link'" [queryParams]="{id : ''}">
+        <a (click)="setCurrentAction(action)" [routerLink]="action.route" [class]="isRoute(action.route) ? 'nav-link active' : 'nav-link'" [queryParams]="{id : ''}">
           {{action.title}}
         </a>
       </li>
