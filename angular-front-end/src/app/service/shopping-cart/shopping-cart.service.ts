@@ -61,7 +61,9 @@ export class ShoppingCartService{
 
   instanceCart(){
     console.log('instance cart : ');
-    this.user = JSON.parse(localStorage.getItem('user')!);
+    if (typeof window !== 'undefined') {
+      this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
+    }
     console.log('user id : ', this.user.id);
     this.getUnpaidShoppingCartByUserId(this.user.id!).subscribe(
       resp => {

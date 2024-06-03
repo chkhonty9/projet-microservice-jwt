@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from "../../service/shopping-cart/shopping-cart.service";
-import {CartItemsService} from "../../service/cart-item/cart-items.service";
 import {ShoppingCart} from "../../model/shopping-cart";
-import {ActivatedRoute} from "@angular/router";
 import {CartItem} from "../../model/cart-item";
-import {User} from "../../model/user";
-import {UserService} from "../../service/user/user.service";
 
 @Component({
   selector: 'app-cart',
