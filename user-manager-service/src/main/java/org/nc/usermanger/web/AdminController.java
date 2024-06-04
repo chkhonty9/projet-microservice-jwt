@@ -37,8 +37,8 @@ public class AdminController {
 
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable Long id){
-        UserDTO user = accountService.getUser(id);
-        accountService.deleteUser(user);
+        System.out.println("controller delete user : ");
+        accountService.deleteUser(id);
     }
 
     @DeleteMapping("/role/{id}")
@@ -46,4 +46,10 @@ public class AdminController {
         RoleDTO role = accountService.getRole(id);
         accountService.deleteRole(role);
     }
+
+    @GetMapping("/name/{name}")
+    public List<UserDTO> getUser(@PathVariable String name){
+        return this.accountService.byName(name);
+    }
+
 }

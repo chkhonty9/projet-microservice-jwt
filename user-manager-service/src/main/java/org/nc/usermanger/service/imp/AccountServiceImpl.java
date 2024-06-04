@@ -64,31 +64,43 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<UserDTO> users() {
+        System.out.println("-- service : find users ---");
         return userRepository.findAll().stream().map(u -> userMapper.fromUser(u)).collect(Collectors.toList());
     }
 
     @Override
     public List<RoleDTO> roles() {
+        System.out.println("-- service : find roles ---");
         return roleRepository.findAll().stream().map(r -> roleMapper.fromRole(r)).collect(Collectors.toList());
     }
 
     @Override
-    public void deleteUser(UserDTO user) {
-        userRepository.delete(userMapper.fromUserDTO(user));
+    public void deleteUser(Long id) {
+        System.out.println("-- service : delete user ---");
+        userRepository.deleteById(id);
     }
 
     @Override
     public void deleteRole(RoleDTO role) {
+        System.out.println("-- service : delete role ---");
         roleRepository.delete(roleMapper.fromRoleDTO(role));
     }
 
     @Override
     public UserDTO getUser(Long id) {
+        System.out.println("-- service : find user by id ---");
         return userMapper.fromUser(userRepository.findById(id).get());
     }
 
     @Override
     public RoleDTO getRole(Long id) {
+        System.out.println("-- service : find user by role ---");
         return roleMapper.fromRole(roleRepository.findById(id).get());
+    }
+
+    @Override
+    public List<UserDTO> byName(String name) {
+        System.out.println("-- service : find user by name ---");
+        return userRepository.findByNameContainingIgnoreCase(name).stream().map(u -> userMapper.fromUser(u)).collect(Collectors.toList());
     }
 }

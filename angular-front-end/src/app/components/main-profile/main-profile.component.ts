@@ -11,7 +11,7 @@ import {DatePipe} from "@angular/common";
 })
 export class MainProfileComponent implements OnInit {
 
-  carts: ShoppingCart[] = new Array<ShoppingCart>();
+  carts: ShoppingCart[] = [];
   user: User = new User();
 
   constructor(
@@ -19,11 +19,24 @@ export class MainProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.getCarts();
     this.carts = this.cartService.carts;
     console.log('init main profile component : ', this.carts);
     this.user = this.cartService.user;
   }
 
 
+  cancel(id: string | null) {
+    this.cartService.deleteShoppingCart(id!).subscribe(
+      resp => {
+        console.log('deleted : ', resp);
+        this.cartService.instanceCart();
+        this.cartService.getCarts();
+        let index = this.carts.findIndex(
+          x => x.id == id
+        );
+        this.carts.splice(index, 1);
+      },
+      error => console.log('error',error)
+    )
+  }
 }

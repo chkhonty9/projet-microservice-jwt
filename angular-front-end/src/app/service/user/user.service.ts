@@ -28,5 +28,16 @@ export class UserService {
     return this.http.put<User>(this.host+`/user/update/${id}`, user, { headers: this.headers });
   }
 
+  users(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.host}/admin/users`, { headers: this.headers });
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<void>(`${this.host}/admin/user/${id}`, { headers: this.headers });
+  }
+
+  userByName(name: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.host}/admin/name/${name}`, { headers: this.headers });
+  }
 
 }

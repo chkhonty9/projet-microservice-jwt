@@ -1,0 +1,35 @@
+<!-- Category-->
+<div class="m-5 justify-content-center">
+  <div class="card border shadow-0">
+    <div class="m-4">
+      <h4 class="card-title mb-4">Manage Users</h4>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="wordToSearch" name="search" (ngModelChange)="getUsersByName()" (input)="onInputChange($event)">
+        <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit" (click)="getUsersByName()">Search</button>
+      </form>
+      <div class="row gy-3 mt-4" *ngFor="let user of users">
+        <div class="col-lg align-content-center">
+          <div class="me-lg">
+            <div class="d-flex">
+              <div class="ms-3 m-3">
+                <h4>
+                  {{ user.name }} <br>
+                </h4>
+                <p class="description">
+                  <strong>Email:</strong> {{ user.email }}<br>
+                  <strong>Phone:</strong> {{ user.phoneNumber }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+          <div class="float-md-end">
+            <a class="btn btn-outline-danger" (click)="delete(user.id)">Remove</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

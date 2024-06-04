@@ -2,7 +2,7 @@
 <div class="m-5 justify-content-center">
   <div class="card border shadow-0">
     <div class="m-4">
-      <h4 class="card-title mb-4">Manage Products </h4>
+      <h2 class="card-title mb-4">Manage Products </h2>
       <form class="form-inline my-2 my-lg-0" >
         <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="wordTosearch" name="search" (ngModelChange)="getProduct()" (input)="onInputChange($event)">
         <button class="btn btn-outline-success my-2 my-sm-0 search-button" type="submit" (click)="getProduct()">Search</button>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
           <div class="float-md-end">
-            <a class="btn btn-light border text-danger icon-hover-danger" (click)="deleteItem(product)">Remove</a>
+            <a class="btn btn-outline-danger" (click)="deleteItem(product)">Remove</a>
           </div>
         </div>
       </div>

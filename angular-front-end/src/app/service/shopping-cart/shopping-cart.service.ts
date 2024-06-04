@@ -15,10 +15,11 @@ export class ShoppingCartService{
 
   cart: ShoppingCart = new ShoppingCart();
   user:User = new User();
-  carts: ShoppingCart[] = new Array<ShoppingCart>();
+  carts: ShoppingCart[] = [];
 
   constructor(private http: HttpClient) {
     this.instanceCart();
+    this.getCarts();
   }
 
   private getHeaders(): HttpHeaders {
@@ -72,6 +73,7 @@ export class ShoppingCartService{
       },
       error => {
         console.log('error : '+error);
+        this.cart = new ShoppingCart();
         this.cart.userId = this.user.id!;
       }
     )
@@ -135,9 +137,6 @@ export class ShoppingCartService{
 
   getCarts(){
     console.log('get carts : ');
-    if (typeof window !== 'undefined') {
-      this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
-    }
     console.log('user id : ', this.user.id);
     this.getShoppingCartsByUserId(this.user.id!).subscribe(
       carts => {

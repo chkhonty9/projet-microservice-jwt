@@ -22,6 +22,8 @@ export class ManageProductComponent implements OnInit {
 
   deleteItem(product: Product) {
     this.productService.deleteProduct(product.id!);
+    let index = this.products.findIndex(p => p.id === product.id);
+    this.products.splice(index, 1);
   }
 
   getProduct(){

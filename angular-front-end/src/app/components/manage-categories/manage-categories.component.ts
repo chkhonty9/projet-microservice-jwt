@@ -48,4 +48,10 @@ export class ManageCategoriesComponent  implements OnInit{
       this.getCategories();
     }
   }
+
+  delete(id: string | null) {
+    this.categoriesService.deleteCategory(id!);
+    let index = this.categories.findIndex(category => category.id === id);
+    this.categories.splice(index, 1);
+  }
 }
