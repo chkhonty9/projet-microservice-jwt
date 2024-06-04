@@ -25,6 +25,7 @@ import {PromoComponent} from "./components/promo/promo.component";
 import {SearchComponent} from "./components/search/search.component";
 import { CartComponent } from './components/cart/cart.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MainProfileComponent } from './components/main-profile/main-profile.component';
 
 export function tokenGetter(): string {
   if (typeof localStorage !== 'undefined') {
@@ -57,6 +58,7 @@ export function tokenGetter(): string {
     PromoComponent,
     SearchComponent,
     CartComponent,
+    MainProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,15 +15,18 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const isAdminStored = localStorage.getItem('isAdmin');
-    this.isAdmin = isAdminStored === 'true';
+    if(typeof window !== 'undefined'){
+      const isAdminStored = localStorage.getItem('isAdmin');
+      this.isAdmin = isAdminStored === 'true';
+    }
     console.log(`isAdmin: ${this.isAdmin}`);
     this.initializeActions();
   }
 
   initializeActions(): void {
     this.actions = [
-      { title: "Profile", route: "info", authorized: true },
+      { title: "Account", route: "main-profile", authorized: true },
+      { title: "Information", route: "info", authorized: true },
       { title: "New product", route: "new-product", authorized: this.isAdmin },
       { title: "New category", route: "new-category", authorized: this.isAdmin },
       { title: "Manage product", route: "manage-product", authorized: this.isAdmin },

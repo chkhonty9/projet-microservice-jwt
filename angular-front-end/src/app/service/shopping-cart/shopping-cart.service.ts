@@ -15,6 +15,7 @@ export class ShoppingCartService{
 
   cart: ShoppingCart = new ShoppingCart();
   user:User = new User();
+  carts: ShoppingCart[] = new Array<ShoppingCart>();
 
   constructor(private http: HttpClient) {
     this.instanceCart();
@@ -129,6 +130,20 @@ export class ShoppingCartService{
         console.log('cart : ', this.cart.id);
       },
       error => console.log('error : ', error)
+    )
+  }
+
+  getCarts(){
+    console.log('get carts : ');
+    if (typeof window !== 'undefined') {
+      this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
+    }
+    console.log('user id : ', this.user.id);
+    this.getShoppingCartsByUserId(this.user.id!).subscribe(
+      carts => {
+        this.carts = carts;
+      },
+      error => console.log('error : '+error)
     )
   }
 

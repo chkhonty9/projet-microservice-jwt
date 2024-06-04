@@ -15,6 +15,7 @@ import {NewProductComponent} from "./components/new-product/new-product.componen
 import {ManageCategoriesComponent} from "./components/manage-categories/manage-categories.component";
 import {ManageProductComponent} from "./components/manage-product/manage-product.component";
 import {CartComponent} from "./components/cart/cart.component";
+import {MainProfileComponent} from "./components/main-profile/main-profile.component";
 
 const routes: Routes = [
   {path : "login", component : LoginComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
       {
         path: "profile", component: ProfileComponent,
         children: [
-          { path: '', redirectTo: 'info', pathMatch: 'full' },
+          { path: '', redirectTo: 'main-profile', pathMatch: 'full' },
+          {path: "main-profile", component: MainProfileComponent},
           {path: "info", component: InfoComponent},
           {path: "new-category", component: NewCategoryComponent},
           {path: "new-product", component: NewProductComponent},

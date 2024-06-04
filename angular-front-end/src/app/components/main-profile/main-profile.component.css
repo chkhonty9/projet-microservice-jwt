@@ -1,0 +1,33 @@
+hr{
+  margin-top: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  border-radius: 8px;
+}
+
+.card .card {
+  background-color: #ffffff;
+}
+
+.badge {
+  padding: 0.5em;
+  font-size: 0.875em;
+}
+
+img {
+  object-fit: cover;
+}
+
+.text-secondary {
+  font-weight: 600;
+  color: #6c757d !important;
+}
+
+.btn-outline-danger {
+  border-width: 2px;
+}
