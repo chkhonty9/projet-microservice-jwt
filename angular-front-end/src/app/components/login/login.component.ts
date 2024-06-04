@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../service/auth/authentication.service";
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService:AuthenticationService,
               private router:Router,
-              private fb : FormBuilder,) {}
+              private fb : FormBuilder,
+              private toastr: ToastrService) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
       username : this.fb.control('', [Validators.required]),
@@ -32,7 +34,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('layout');
       },
       err=>{
-        console.log('error : ', err)
+          this.toastr.error('password or username incorrect');
+          console.log('error : ', err);
       })
   }
 

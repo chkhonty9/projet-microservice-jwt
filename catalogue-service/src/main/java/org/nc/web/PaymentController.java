@@ -24,7 +24,7 @@ public class PaymentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PaymentDTO> getPaymentById(@PathVariable Long id) {
+    public ResponseEntity<PaymentDTO> getPaymentById(@PathVariable String id) {
         System.out.println("Inside getPaymentByIdController : ");
         PaymentDTO payment = paymentService.findById(id);
         return payment != null ? ResponseEntity.ok(payment) : ResponseEntity.notFound().build();
@@ -38,7 +38,7 @@ public class PaymentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePayment(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePayment(@PathVariable String id) {
         System.out.println("Inside deletePayment controller  : ");
         paymentService.delete(id);
         return ResponseEntity.noContent().build();

@@ -26,17 +26,20 @@ export class MainProfileComponent implements OnInit {
 
 
   cancel(id: string | null) {
-    this.cartService.deleteShoppingCart(id!).subscribe(
-      resp => {
-        console.log('deleted : ', resp);
-        this.cartService.instanceCart();
-        this.cartService.getCarts();
-        let index = this.carts.findIndex(
-          x => x.id == id
-        );
-        this.carts.splice(index, 1);
-      },
-      error => console.log('error',error)
-    )
+    const shouldConcel = window.confirm("Are you sure you want to cancel this item?");
+    if (shouldConcel) {
+      this.cartService.deleteShoppingCart(id!).subscribe(
+        resp => {
+          console.log('deleted : ', resp);
+          this.cartService.instanceCart();
+          this.cartService.getCarts();
+          let index = this.carts.findIndex(
+            x => x.id == id
+          );
+          this.carts.splice(index, 1);
+        },
+        error => console.log('error',error)
+      )
+    }
   }
 }

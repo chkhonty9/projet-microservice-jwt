@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit{
   navigateToSearch(): void {
     this.router.navigate(['/layout/search']);
   }
+
   isRoute(route:any){
     return this.router.url.includes(route);
 

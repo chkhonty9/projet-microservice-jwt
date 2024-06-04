@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class PaymentDTO {
 
-    private Long id;
+    private String id;
     private Date datePayment;
     private String cardNumber;
 

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AuthenticationService} from "./service/auth/authentication.service";
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "./service/user/user.service";
 import {LoginComponent} from "./components/login/login.component";
@@ -27,6 +27,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { UserManagerComponent } from './components/user-manager/user-manager.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 export function tokenGetter(): string {
   if (typeof localStorage !== 'undefined') {
@@ -74,14 +76,17 @@ export function tokenGetter(): string {
     }),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     UserService,
     provideClientHydration(),
     AuthenticationService,
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

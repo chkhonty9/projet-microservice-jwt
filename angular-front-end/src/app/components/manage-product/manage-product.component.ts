@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../../model/product";
 import {ProductsService} from "../../service/product/products.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-manage-product',
@@ -13,7 +13,7 @@ export class ManageProductComponent implements OnInit {
   products: Product[] = [];
   wordTosearch:any;
 
-  constructor(private productService: ProductsService, private snackBar: MatSnackBar) {
+  constructor(private productService: ProductsService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -21,9 +21,12 @@ export class ManageProductComponent implements OnInit {
   }
 
   deleteItem(product: Product) {
-    this.productService.deleteProduct(product.id!);
-    let index = this.products.findIndex(p => p.id === product.id);
-    this.products.splice(index, 1);
+    const shouldDelete = window.confirm("Are you sure you want to delete this product?");
+    if (shouldDelete) {
+      this.productService.deleteProduct(product.id!);
+      let index = this.products.findIndex(p => p.id === product.id);
+      this.products.splice(index, 1);
+    }
   }
 
   getProduct(){
@@ -34,8 +37,12 @@ export class ManageProductComponent implements OnInit {
     this.productService.getProductsContain(this.wordTosearch).subscribe(
       products => {
         this.products = products;
+        if(products.length == 0){
+          this.toastr.error('no product found');
+        }
       },
       error => {
+        this.toastr.error('no product found');
         console.log('error : ' + error);
         this.getProducts();
       }
@@ -49,7 +56,10 @@ export class ManageProductComponent implements OnInit {
       products => {
         this.products = products;
       },
-      error => console.log('error : '+error)
+      error => {
+        this.toastr.error('no product found');
+        console.log('error : ' + error)
+      }
     )
   }
 
@@ -58,8 +68,12 @@ export class ManageProductComponent implements OnInit {
     this.productService.getProductsEpuise().subscribe(
       products => {
         this.products = products;
+        if(products.length == 0){
+          this.toastr.error('no product found');
+        }
       },
       error => {
+        this.toastr.error('no product found');
         console.log('error : ' + error);
       }
     )

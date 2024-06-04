@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from "../../service/categories/categories.service";
 import {Category} from "../../model/category";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-manage-categories',
@@ -11,7 +12,7 @@ export class ManageCategoriesComponent  implements OnInit{
   wordTosearch: any;
   categories: Category[] = [];
 
-  constructor(private categoriesService: CategoriesService) {}
+  constructor(private categoriesService: CategoriesService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getCategories();
@@ -24,6 +25,7 @@ export class ManageCategoriesComponent  implements OnInit{
         this.categories = categories;
       },
       error => {
+        this.toastr.error('no category found');
         console.log('error :',error);
       }
     )
@@ -34,8 +36,12 @@ export class ManageCategoriesComponent  implements OnInit{
     this.categoriesService.getCategoryByName(this.wordTosearch).subscribe(
       category => {
         this.categories = category;
+        if(this.categories.length == 0){
+          this.toastr.error('no product found');
+        }
       },
       error => {
+        this.toastr.error('no category found');
         console.log('error :',error);
       }
     )
@@ -50,8 +56,11 @@ export class ManageCategoriesComponent  implements OnInit{
   }
 
   delete(id: string | null) {
-    this.categoriesService.deleteCategory(id!);
-    let index = this.categories.findIndex(category => category.id === id);
-    this.categories.splice(index, 1);
+    const shouldDelete = window.confirm("Are you sure you want to delete this item?");
+    if(shouldDelete) {
+      this.categoriesService.deleteCategory(id!);
+      let index = this.categories.findIndex(category => category.id === id);
+      this.categories.splice(index, 1);
+    }
   }
 }

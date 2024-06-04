@@ -182,3 +182,42 @@ body {
   }
 }
 
+/* Modal Header */
+.modal-header {
+  color: rgba(5, 140, 248, 0.9);
+  background : white;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+}
+
+/* Form labels */
+label {
+  font-weight: bold;
+}
+
+/* Submit button */
+.btn-primary {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Close button */
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+

@@ -15,11 +15,10 @@ import java.util.Date;
 @NoArgsConstructor
 public class Payment {
     @Id
-    private Long id;
+    private String id;
     private Date datePayment;
     private String cardNumber;
 
-    @DBRef
     private ShoppingCart shoppingCart;
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PaymentService {
     PaymentDTO save(PaymentDTO payment);
-    PaymentDTO findById(Long  id);
+    PaymentDTO findById(String  id);
     List<PaymentDTO> findAll();
-    void delete(Long id);
+    void delete(String id);
 }

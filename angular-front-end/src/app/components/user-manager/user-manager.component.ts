@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/user";
 import {UserService} from "../../service/user/user.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-user-manager',
@@ -11,7 +12,7 @@ export class UserManagerComponent implements OnInit{
   users : User[] = [];
   wordToSearch: any;
 
-  constructor(private userService : UserService ) {}
+  constructor(private userService : UserService, private toastr: ToastrService ) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -23,7 +24,10 @@ export class UserManagerComponent implements OnInit{
       users => {
         this.users = users;
       },
-      error => console.log('error : '+error)
+      error => {
+        this.toastr.error('no user found');
+        console.log('error : '+error)
+      }
     )
   }
 
@@ -46,13 +50,16 @@ export class UserManagerComponent implements OnInit{
   }
 
   delete(id: number | null) {
-    console.log('delete', id);
-    this.userService.delete(id!).subscribe(
-      response => {
-        console.log('resp : ', response);
-        this.getUsers();
-      },
-      error => console.log('error : '+error)
-    )
+    const resp = window.confirm('Are you sure you want to delete this user?');
+    if(resp){
+      console.log('delete', id);
+      this.userService.delete(id!).subscribe(
+        response => {
+          console.log('resp : ', response);
+          this.getUsers();
+        },
+        error => console.log('error : '+error)
+      )
+    }
   }
 }

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Product} from "../../model/product";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Category} from "../../model/category";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ProductsService {
 
   private host: string = "http://localhost:8888/CATALOGUE-SERVICE/products";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private toastr: ToastrService) { }
 
   private getHeaders(): HttpHeaders {
     const token: string = tokenGetter()!;
@@ -89,8 +90,12 @@ export class ProductsService {
     this.getProductsContain(word).subscribe(
       products => {
         this.updateProducts(products);
+        if(products.length == 0){
+          this.toastr.error('no product found');
+        }
       },
       error => {
+        this.toastr.error('no product found');
         console.log('error : ' + error);
         this.getProducts();
       }

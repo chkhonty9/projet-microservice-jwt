@@ -146,4 +146,9 @@ export class ShoppingCartService{
     )
   }
 
+  pay(){
+    this.cart.status = true;
+    this.saveCart();
+  }
+
 }

@@ -1,7 +1,7 @@
 package org.nc.service.imp;
 
 import lombok.AllArgsConstructor;
-import org.nc.dao.PayementRepository;
+import org.nc.dao.PaymentRepository;
 import org.nc.dto.PaymentDTO;
 import org.nc.mapper.PaymentMapper;
 import org.nc.service.PaymentService;
@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
 
-    private PayementRepository payementRepository;
+    private PaymentRepository payementRepository;
     private PaymentMapper payementMapper;
 
     @Override
@@ -25,7 +25,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public PaymentDTO findById(Long id) {
+    public PaymentDTO findById(String id) {
         System.out.println("Inside findById method of PaymentService : ");
         return this.payementMapper.fromPayment(this.payementRepository.findById(id).orElse(null));
     }
@@ -37,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         System.out.println("Inside delete method of PaymentService : ");
         this.payementRepository.deleteById(id);
     }

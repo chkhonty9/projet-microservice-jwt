@@ -4,6 +4,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
 import {Register} from "../../model/register";
 import {User} from "../../model/user";
 import {AuthenticationService} from "../../service/auth/authentication.service";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(private authService:AuthenticationService,
               private router:Router,
-              private fb : FormBuilder,) {}
+              private fb : FormBuilder,
+              private toastr: ToastrService) {}
 
   ngOnInit(){
     this.signupForm = this.fb.group({
@@ -45,6 +47,7 @@ export class SignUpComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       err => {
+        this.toastr.error('information incorrect');
         console.log('error : ', err);
       }
     );
