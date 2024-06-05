@@ -42,4 +42,11 @@ export class MainProfileComponent implements OnInit {
       )
     }
   }
+  totalPrice(cart : ShoppingCart){
+    let total = 0;
+    for(let item of cart.cartItems){
+      total += item.price;
+    }
+    return total;
+  }
 }

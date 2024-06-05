@@ -29,6 +29,8 @@ import { MainProfileComponent } from './components/main-profile/main-profile.com
 import { UserManagerComponent } from './components/user-manager/user-manager.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { ProductsComponent } from './components/products/products.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 export function tokenGetter(): string {
   if (typeof localStorage !== 'undefined') {
@@ -63,6 +65,8 @@ export function tokenGetter(): string {
     CartComponent,
     MainProfileComponent,
     UserManagerComponent,
+    ProductsComponent,
+    RecommendationComponent,
   ],
   imports: [
     BrowserModule,

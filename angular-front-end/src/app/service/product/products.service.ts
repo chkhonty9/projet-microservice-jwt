@@ -86,6 +86,12 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.host}/promo`, { headers });
   }
 
+  getProductRecommendation(id:number):Observable<Product[]> {
+    console.log("Product service: getProducts recommendation");
+    const headers = this.getHeaders();
+    return this.http.get<Product[]>(`${this.host}/recommendation/${id}`, { headers });
+  }
+
   getProduct(word : string){
     this.getProductsContain(word).subscribe(
       products => {

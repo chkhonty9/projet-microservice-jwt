@@ -17,6 +17,8 @@ import {ManageProductComponent} from "./components/manage-product/manage-product
 import {CartComponent} from "./components/cart/cart.component";
 import {MainProfileComponent} from "./components/main-profile/main-profile.component";
 import {UserManagerComponent} from "./components/user-manager/user-manager.component";
+import {ProductsComponent} from "./components/products/products.component";
+import {RecommendationComponent} from "./components/recommendation/recommendation.component";
 
 const routes: Routes = [
   {path : "login", component : LoginComponent},
@@ -31,6 +33,8 @@ const routes: Routes = [
       {path: 'promo', component: PromoComponent},
       {path: 'search', component: SearchComponent},
       {path: 'cart', component: CartComponent},
+      {path: 'products', component: ProductsComponent},
+      {path: 'recommendation', component: RecommendationComponent},
       {
         path: "profile", component: ProfileComponent,
         children: [

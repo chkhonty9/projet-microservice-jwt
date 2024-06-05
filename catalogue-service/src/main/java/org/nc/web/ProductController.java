@@ -5,6 +5,7 @@ import org.nc.dto.CategoryDTO;
 import org.nc.dto.ProductDTO;
 import org.nc.service.CategoryService;
 import org.nc.service.ProductService;
+import org.nc.service.Recommendation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ public class ProductController {
 
     private final ProductService productService;
     private final CategoryService categoryService;
+    private final Recommendation recommendation;
 
     @PostMapping("/save")
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
@@ -78,5 +80,10 @@ public class ProductController {
     public ResponseEntity<List<ProductDTO>> getProductsPromo() {
         System.out.println("inside getProducts promo controller : ");
         return ResponseEntity.ok(productService.findByPromotionIsTrue());
+    }
+    @GetMapping("/recommendation/{id}")
+    public ResponseEntity<List<ProductDTO>> getProductsRecommendation(@PathVariable Long id) {
+        System.out.println("inside getProducts recommendation controller : ");
+        return ResponseEntity.ok(recommendation.recommendations(id));
     }
 }

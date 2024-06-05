@@ -92,7 +92,6 @@ export class ShoppingCartService{
     } else {
       console.log('pushing item');
       this.cart.cartItems.push(item);
-      this.cart.total++;
     }
     console.log(this.cart.cartItems);
     this.saveCart();
@@ -112,6 +111,7 @@ export class ShoppingCartService{
     );
     this.cart.cartItems[index].quantity = item.quantity;
     this.saveCart();
+    return this.cart;
   }
 
   deleteProduct(item: CartItem) {
@@ -125,6 +125,7 @@ export class ShoppingCartService{
   saveCart(){
     console.log('saving cart');
     console.log('cart user id ', this.cart.userId);
+    this.cart.total = this.totalPrice();
     this.createShoppingCart(this.cart).subscribe(
       resp=>{
         console.log('resp of new save cart ', resp);
@@ -140,7 +141,7 @@ export class ShoppingCartService{
     console.log('user id : ', this.user.id);
     this.getShoppingCartsByUserId(this.user.id!).subscribe(
       carts => {
-        this.carts = carts;
+        this.carts = carts.reverse();
       },
       error => console.log('error : '+error)
     )
@@ -149,6 +150,14 @@ export class ShoppingCartService{
   pay(){
     this.cart.status = true;
     this.saveCart();
+  }
+
+  totalPrice(){
+    let total = 0;
+    for(let item of this.cart.cartItems){
+      total += item.price;
+    }
+    return total;
   }
 
 }

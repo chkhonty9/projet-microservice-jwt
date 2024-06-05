@@ -11,8 +11,10 @@ export class HeaderComponent implements OnInit{
 
   actions : Array<any> = [
     {title : "Home", "route" : "home"},
+    {title : "Products", "route" : "products"},
     {title : "Categories", "route" : "categories"},
-    {title: "Promo", "route" : "promo"}
+    {title: "Promo", "route" : "promo"},
+    {title : "Recommendation", "route" : "recommendation"}
   ];
 
   wordTosearch:any;

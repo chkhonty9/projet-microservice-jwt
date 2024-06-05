@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from "../../service/shopping-cart/shopping-cart.service";
 import {ShoppingCart} from "../../model/shopping-cart";
 import {CartItem} from "../../model/cart-item";
-import {Product} from "../../model/product";
 import {ProductsService} from "../../service/product/products.service";
 import {Payment} from "../../model/payment";
 import {PaymentService} from "../../service/payment/payment.service";
@@ -16,37 +15,48 @@ export class CartComponent implements OnInit {
 
   cart: ShoppingCart = new ShoppingCart();
   cardNumber : string = '';
+  total: number = 0;
 
   constructor(
     private cartService: ShoppingCartService,
     private productService:ProductsService,
-    private paymentService:PaymentService
+    private paymentService:PaymentService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.cart = this.cartService.cart;
     console.log('init cart component cart : ', this.cart);
+    this.total = this.cart.total;
   }
 
   deleteItem(item : CartItem){
     const shouldDelete = window.confirm("Are you sure you want to delete this item?");
     if (shouldDelete) {
       this.cartService.deleteProduct(item);
+      let index = this.cart.cartItems.findIndex(
+        x => x.product.id == item.product.id
+      );
+      this.cart.cartItems.splice(index,1);
     }
   }
 
 
   totalPrice(){
+    this.cart=this.cartService.cart;
     let total = 0;
     for(let item of this.cart.cartItems){
       total += item.price;
     }
+    this.total = total;
+    this.cdr.detectChanges();
     return total;
   }
 
   onQuantityChange(item: CartItem) {
     console.log('Quantity changed:', item.quantity);
-    this.cartService.onQuantityChange(item);
+    this.cart = this.cartService.onQuantityChange(item);
+    this.totalPrice();
   }
 
   openModel() {
@@ -90,4 +100,5 @@ export class CartComponent implements OnInit {
       this.productService.updateProduct(product, product.id!);
     }
   }
+
 }
