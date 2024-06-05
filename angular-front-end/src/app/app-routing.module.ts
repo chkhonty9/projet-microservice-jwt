@@ -19,6 +19,7 @@ import {MainProfileComponent} from "./components/main-profile/main-profile.compo
 import {UserManagerComponent} from "./components/user-manager/user-manager.component";
 import {ProductsComponent} from "./components/products/products.component";
 import {RecommendationComponent} from "./components/recommendation/recommendation.component";
+import {ManageCartsComponent} from "./components/manage-carts/manage-carts.component";
 
 const routes: Routes = [
   {path : "login", component : LoginComponent},
@@ -46,6 +47,7 @@ const routes: Routes = [
           {path: "manage-categories", component: ManageCategoriesComponent},
           {path: "manage-product", component: ManageProductComponent},
           {path: "manage-users", component: UserManagerComponent},
+          {path: "manage-carts", component: ManageCartsComponent},
         ]
       }
     ],

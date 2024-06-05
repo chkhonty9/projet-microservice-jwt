@@ -5,6 +5,7 @@ import {ShoppingCart} from "../../model/shopping-cart";
 import {Observable} from "rxjs";
 import {User} from "../../model/user";
 import {CartItem} from "../../model/cart-item";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class ShoppingCartService{
   user:User = new User();
   carts: ShoppingCart[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.instanceCart();
     this.getCarts();
   }
@@ -110,6 +111,7 @@ export class ShoppingCartService{
       x => x.product.id == item.product.id
     );
     this.cart.cartItems[index].quantity = item.quantity;
+    this.cart.cartItems[index].price = item.product.price * item.quantity;
     this.saveCart();
     return this.cart;
   }
@@ -130,6 +132,7 @@ export class ShoppingCartService{
       resp=>{
         console.log('resp of new save cart ', resp);
         this.cart = resp;
+        this.getCarts();
         console.log('cart : ', this.cart.id);
       },
       error => console.log('error : ', error)
@@ -150,6 +153,8 @@ export class ShoppingCartService{
   pay(){
     this.cart.status = true;
     this.saveCart();
+    this.router.navigate(['/layout/home']);
+    this.instanceCart();
   }
 
   totalPrice(){
@@ -159,5 +164,6 @@ export class ShoppingCartService{
     }
     return total;
   }
+
 
 }

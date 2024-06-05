@@ -40,5 +40,9 @@ public class UserController {
     public UserDTO findByUsername(@PathVariable String username){
         return accountService.findByUserName(username);
     }
+    @GetMapping("/{id}")
+    public UserDTO findById(@PathVariable Long id){
+        return accountService.byId(id);
+    }
 
 }

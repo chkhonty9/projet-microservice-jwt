@@ -40,4 +40,8 @@ export class UserService {
     return this.http.get<User[]>(`${this.host}/admin/name/${name}`, { headers: this.headers });
   }
 
+  userById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.host}/user/${id}`, { headers: this.headers });
+  }
+
 }

@@ -5,6 +5,7 @@ import {CartItem} from "../../model/cart-item";
 import {ProductsService} from "../../service/product/products.service";
 import {Payment} from "../../model/payment";
 import {PaymentService} from "../../service/payment/payment.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -43,19 +44,19 @@ export class CartComponent implements OnInit {
 
 
   totalPrice(){
-    this.cart=this.cartService.cart;
-    let total = 0;
+    let t = 0;
     for(let item of this.cart.cartItems){
-      total += item.price;
+      t += item.price;
     }
-    this.total = total;
+    this.total = t;
     this.cdr.detectChanges();
-    return total;
+    return t;
   }
 
   onQuantityChange(item: CartItem) {
     console.log('Quantity changed:', item.quantity);
     this.cart = this.cartService.onQuantityChange(item);
+    console.log('on change cart : ' + this.cart );
     this.totalPrice();
   }
 

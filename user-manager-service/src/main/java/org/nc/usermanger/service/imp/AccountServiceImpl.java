@@ -103,4 +103,10 @@ public class AccountServiceImpl implements AccountService {
         System.out.println("-- service : find user by name ---");
         return userRepository.findByNameContainingIgnoreCase(name).stream().map(u -> userMapper.fromUser(u)).collect(Collectors.toList());
     }
+
+    @Override
+    public UserDTO byId(Long id) {
+        System.out.println("-- service : find user by id ---");
+        return userMapper.fromUser(userRepository.findById(id).get());
+    }
 }

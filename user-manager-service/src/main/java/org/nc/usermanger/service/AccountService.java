@@ -18,4 +18,5 @@ public interface AccountService {
     public UserDTO getUser(Long id);
     public RoleDTO getRole(Long id);
     public List<UserDTO> byName(String name);
+    public UserDTO byId(Long id);
 }
