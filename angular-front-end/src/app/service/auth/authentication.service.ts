@@ -80,6 +80,7 @@ export class AuthenticationService {
 
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
 }

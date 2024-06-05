@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../service/product/products.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../service/auth/authentication.service";
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit{
 
   wordTosearch:any;
 
-  constructor(private productService: ProductsService, private router: Router) {
+  constructor(private productService: ProductsService,private auth: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -61,5 +62,10 @@ export class HeaderComponent implements OnInit{
   isRoute(route:any){
     return this.router.url.includes(route);
 
+  }
+
+  logOut() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }

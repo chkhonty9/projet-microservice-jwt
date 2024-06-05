@@ -26,4 +26,4 @@ COPY --from=build /usr/local/app/dist/angular-front-end/browser /usr/share/nginx
 #COPY --from=build /usr/local/app/dist/angular-front-end /usr/share/nginx/html
 
 # Expose port 8080
-EXPOSE 8080
+EXPOSE 80
