@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
 import {User} from "../../model/user";
+import {window} from "rxjs";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
   styleUrl: './info.component.css'
 })
-export class InfoComponent {
-  currentUser:User;
+export class InfoComponent implements OnInit {
+  currentUser:User = new User();
   confirmPassword!: string;
   passwordsMatch: boolean = true;
 
   constructor(private userService: UserService) {
-    this.currentUser = JSON.parse(localStorage.getItem('user')!);
   }
 
   onSubmit(): void {
@@ -32,6 +33,12 @@ export class InfoComponent {
 
   checkPasswordMatch(form: NgForm) {
     this.passwordsMatch = form.value.password === form.value.confirmPassword;
+  }
+
+  ngOnInit(): void {
+    if(typeof window !== 'undefined') {
+      this.currentUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
+    }
   }
 
 }

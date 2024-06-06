@@ -32,7 +32,8 @@ export class ProfileComponent implements OnInit {
       { title: "Manage product", route: "manage-product", authorized: this.isAdmin },
       { title: "Manage category", route: "manage-categories", authorized: this.isAdmin },
       { title: "Manage Users", route: "manage-users", authorized: this.isAdmin },
-      { title: "Manage Carts", route: "manage-carts", authorized: this.isAdmin }
+      { title: "Manage Carts", route: "manage-carts", authorized: this.isAdmin },
+      { title: "Delivery", route: "delivery", authorized: this.isAdmin }
     ];
   }
 

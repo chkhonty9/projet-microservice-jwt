@@ -83,7 +83,7 @@ export class CartComponent implements OnInit {
       resp => {
         this.cartService.pay();
         this.updateStock();
-        this.cart = this.cartService.cart;
+        this.cart = new ShoppingCart();
         this.closeModel();
       },
       error => console.log('error : '+error)

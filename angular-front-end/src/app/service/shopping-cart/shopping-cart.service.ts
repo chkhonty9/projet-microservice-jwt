@@ -153,20 +153,26 @@ export class ShoppingCartService{
 
   getCarts(){
     console.log('get carts : ');
+    if (typeof window !== 'undefined') {
+      this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
+    }
+
     //console.log('user id : ', this.user.id);
-    this.getShoppingCartsByUserId(this.user.id!).subscribe(
-      carts => {
-        this.carts = carts.reverse();
-      },
-      error => console.log('error : '+error)
-    )
+    if(this.user && this.user.id){
+      this.getShoppingCartsByUserId(this.user.id!).subscribe(
+        carts => {
+          this.carts = carts.reverse();
+        },
+        error => console.log('error : '+error)
+      )
+    }
   }
 
   pay(){
     this.cart.status = true;
     this.saveCart();
-    this.router.navigate(['/layout/home']);
     this.instanceCart();
+    this.router.navigate(['/layout/home']);
   }
 
   totalPrice(){

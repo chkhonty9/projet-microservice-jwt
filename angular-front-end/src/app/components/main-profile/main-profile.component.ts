@@ -21,7 +21,9 @@ export class MainProfileComponent implements OnInit {
   ngOnInit(): void {
     this.carts = this.cartService.carts;
     console.log('init main profile component : ', this.carts);
-    this.user = this.cartService.user;
+    if(typeof window !== 'undefined') {
+      this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
+    }
   }
 
 

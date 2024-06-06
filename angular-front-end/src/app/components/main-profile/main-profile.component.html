@@ -23,9 +23,9 @@
         <div>
           <div class="d-flex justify-content-between">
             <span class="d-block"><strong>Cart ID:</strong> {{ cart.id }}</span>
-            <span class="badge" [ngClass]="{'bg-success': cart.status, 'bg-danger': !cart.status}">
-            {{ cart.status ? 'Paid' : 'Unpaid'}}
-          </span>
+            <span class="badge" [ngClass]="{'bg-success': cart.delivered, 'bg-danger': !cart.delivered}">
+              {{ cart.delivered ? 'Delivered' : 'not delivered'}}
+            </span>
           </div>
           <div class="mt-2">
             <strong>Date:</strong> {{ cart.createdAt | date: 'dd MMMM yyyy' }}
@@ -48,7 +48,12 @@
           <p>{{ user.address }}</p>
         </div>
         <div class="col-md-4">
-          <h6 class="text-secondary">Payment</h6>
+          <h6 class="text-secondary">
+            Payment
+            <span class="badge" [ngClass]="{'bg-success': cart.status, 'bg-danger': !cart.status}">
+              {{ cart.status ? 'Paid' : 'Unpaid'}}
+            </span>
+          </h6>
           <p *ngFor="let item of cart.cartItems">
             {{ item.product.name }} x {{ item.quantity}}
           </p>

@@ -20,6 +20,7 @@ import {UserManagerComponent} from "./components/user-manager/user-manager.compo
 import {ProductsComponent} from "./components/products/products.component";
 import {RecommendationComponent} from "./components/recommendation/recommendation.component";
 import {ManageCartsComponent} from "./components/manage-carts/manage-carts.component";
+import {NotDeliveredCartsComponent} from "./components/not-delivered-carts/not-delivered-carts.component";
 
 const routes: Routes = [
   {path : "login", component : LoginComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
           {path: "manage-product", component: ManageProductComponent},
           {path: "manage-users", component: UserManagerComponent},
           {path: "manage-carts", component: ManageCartsComponent},
+          {path: "delivery", component: NotDeliveredCartsComponent},
         ]
       }
     ],
