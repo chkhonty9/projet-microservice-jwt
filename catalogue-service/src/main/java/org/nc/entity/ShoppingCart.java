@@ -19,6 +19,7 @@ public class ShoppingCart {
     private int total;
     private boolean status;
     private Date createdAt;
+    private boolean delivered;
 
     private Collection<CartItem> cartItems = new ArrayList<>();
 

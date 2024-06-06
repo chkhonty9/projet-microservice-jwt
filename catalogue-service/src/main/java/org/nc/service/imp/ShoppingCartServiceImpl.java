@@ -52,4 +52,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         System.out.println("Inside delete method of ShoppingCartService :");
         this.shoppingCartRepository.deleteById(id);
     }
+
+    @Override
+    public List<ShoppingCartDTO> notDelivered() {
+        return this.shoppingCartRepository.findByDeliveredIsFalse().stream().map(shoppingCart -> this.shoppingCartMapper.fromShoppingCart(shoppingCart)).toList();
+    }
 }

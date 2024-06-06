@@ -10,4 +10,5 @@ import java.util.List;
 public interface ShoppingCartRepository extends MongoRepository<ShoppingCart, String> {
     ShoppingCart findByUserIdAndStatusIsFalse(Long userId);
     List<ShoppingCart> findByUserId(Long userId);
+    List<ShoppingCart> findByDeliveredIsFalse();
 }

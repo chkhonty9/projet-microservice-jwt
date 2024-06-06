@@ -31,9 +31,16 @@ public class ShoppingCartController {
     }
     @GetMapping("/notPayed/{id}")
     public ResponseEntity<ShoppingCartDTO> getShoppingCartNotPayed(@PathVariable Long id) {
-        System.out.println("inside getShoppingCart controller: ");
+        System.out.println("inside getShoppingCart controller not payed: ");
         ShoppingCartDTO shoppingCart = shoppingCartService.findByUserIdAndStatusIsFalse(id);
         return shoppingCart != null ? ResponseEntity.ok(shoppingCart) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/notDelivered")
+    public ResponseEntity<List<ShoppingCartDTO>> getShoppingCartNotDelivered() {
+        System.out.println("inside getShoppingCart controller not delivered: ");
+        List<ShoppingCartDTO> shoppingCarts = shoppingCartService.notDelivered();
+        return shoppingCarts != null ? ResponseEntity.ok(shoppingCarts) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/user/{id}")

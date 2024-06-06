@@ -11,4 +11,5 @@ public interface ShoppingCartService {
     ShoppingCartDTO findOne(String id);
     ShoppingCartDTO findByUserIdAndStatusIsFalse(Long userId);
     void delete(String id);
+    List<ShoppingCartDTO> notDelivered();
 }

@@ -32,6 +32,7 @@ import {ToastrModule} from "ngx-toastr";
 import { ProductsComponent } from './components/products/products.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
 import { ManageCartsComponent } from './components/manage-carts/manage-carts.component';
+import { NotDeliveredCartsComponent } from './components/not-delivered-carts/not-delivered-carts.component';
 
 export function tokenGetter(): string {
   if (typeof localStorage !== 'undefined') {
@@ -69,6 +70,7 @@ export function tokenGetter(): string {
     ProductsComponent,
     RecommendationComponent,
     ManageCartsComponent,
+    NotDeliveredCartsComponent,
   ],
   imports: [
     BrowserModule,

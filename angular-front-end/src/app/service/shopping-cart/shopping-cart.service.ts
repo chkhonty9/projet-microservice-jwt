@@ -62,23 +62,35 @@ export class ShoppingCartService{
     return this.http.get<ShoppingCart[]>(`${this.host}/user/${userId}`, { headers: this.getHeaders() });
   }
 
-  instanceCart(){
+  getCartNotDelivered(): Observable<ShoppingCart[]> {
+    console.log("Shopping cart service: get not delivered Carts");
+    return this.http.get<ShoppingCart[]>(this.host+'/notDelivered', { headers: this.getHeaders() });
+  }
+
+  instanceCart() {
     console.log('instance cart : ');
+
     if (typeof window !== 'undefined') {
       this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
     }
-    console.log('user id : ', this.user.id);
-    this.getUnpaidShoppingCartByUserId(this.user.id!).subscribe(
-      resp => {
-        this.cart = resp;
-      },
-      error => {
-        console.log('error : '+error);
-        this.cart = new ShoppingCart();
-        this.cart.userId = this.user.id!;
-      }
-    )
+
+    if (this.user && this.user.id) { // Check if this.user and this.user.id are not null
+      this.getUnpaidShoppingCartByUserId(this.user.id).subscribe(
+        resp => {
+          this.cart = resp;
+        },
+        error => {
+          console.log('error: ' + error);
+          this.cart = new ShoppingCart();
+          this.cart.userId = this.user.id!;
+        }
+      );
+    } else {
+      console.log('User is null or does not have an ID.');
+      // Handle the case where user or user.id is null
+    }
   }
+
 
   addItemCart(item : CartItem){
     console.log('service : add to cart');
@@ -141,7 +153,7 @@ export class ShoppingCartService{
 
   getCarts(){
     console.log('get carts : ');
-    console.log('user id : ', this.user.id);
+    //console.log('user id : ', this.user.id);
     this.getShoppingCartsByUserId(this.user.id!).subscribe(
       carts => {
         this.carts = carts.reverse();

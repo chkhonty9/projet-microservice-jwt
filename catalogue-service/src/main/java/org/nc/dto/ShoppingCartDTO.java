@@ -17,6 +17,7 @@ public class ShoppingCartDTO {
     private int total;
     private boolean status;
     private Date createdAt;
+    private boolean delivered;
 
     private Collection<CartItemDTO> cartItems = new ArrayList<>();
 
