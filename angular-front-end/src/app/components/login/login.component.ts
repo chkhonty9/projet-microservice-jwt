@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         console.log('response : ', resp);
         this.authService.saveToken(resp.headers.get('Authorization'));
         localStorage.setItem("isAdmin", this.authService.isAdmin().toString());
+        this.authService.saveUser();
         this.router.navigate(['layout']);
       },
       err=>{

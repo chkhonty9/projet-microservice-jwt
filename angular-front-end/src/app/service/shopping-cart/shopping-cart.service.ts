@@ -74,6 +74,8 @@ export class ShoppingCartService{
       this.user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
     }
 
+    console.log('user : ' + this.user);
+
     if (this.user && this.user.id) { // Check if this.user and this.user.id are not null
       this.getUnpaidShoppingCartByUserId(this.user.id).subscribe(
         resp => {

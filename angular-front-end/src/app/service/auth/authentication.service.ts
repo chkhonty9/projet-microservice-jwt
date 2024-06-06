@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {Register} from "../../model/register";
 import {User} from "../../model/user";
 import {UserService} from "../user/user.service";
+import {ShoppingCartService} from "../shopping-cart/shopping-cart.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthenticationService {
   private host:string="http://localhost:8888/USER-MANAGER-SERVICE";
   private jwtToken:any;
   private roles:Array<any>=[];
-  constructor(private http:HttpClient,private userService:UserService) {}
+  constructor(private http:HttpClient,private userService:UserService,private cartService:ShoppingCartService) {}
 
   login(user:any){
     console.log('service : login function');
@@ -57,6 +58,8 @@ export class AuthenticationService {
         console.log('resp : ' + user.id);
         localStorage.setItem('user', JSON.stringify(user));
         //console.log('user email : ' + this.userService.getCurrentUser().email);
+        this.cartService.instanceCart();
+        this.cartService.getCarts();
       },
       err => {
         console.log('error : ', err);

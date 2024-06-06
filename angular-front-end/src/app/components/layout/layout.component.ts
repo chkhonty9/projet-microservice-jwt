@@ -8,11 +8,12 @@ import {ShoppingCartService} from "../../service/shopping-cart/shopping-cart.ser
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent implements OnInit{
-  constructor(private authService: AuthenticationService,private cartService: ShoppingCartService) {
+  constructor(private cartService: ShoppingCartService) {
   }
 
   ngOnInit(): void {
-    this.authService.saveUser();
+    this.cartService.instanceCart();
+    this.cartService.getCarts();
   }
 
 
