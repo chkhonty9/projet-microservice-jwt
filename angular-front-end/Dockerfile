@@ -1,7 +1,7 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM node:latest as build
+FROM node:18 as build
 
 # Set the working directory
 WORKDIR /usr/local/app
@@ -27,3 +27,6 @@ COPY --from=build /usr/local/app/dist/angular-front-end/browser /usr/share/nginx
 
 # Expose port 8080
 EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
