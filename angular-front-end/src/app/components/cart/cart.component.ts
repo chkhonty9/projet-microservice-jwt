@@ -81,8 +81,8 @@ export class CartComponent implements OnInit {
     payment.datePayment = new Date();
     this.paymentService.createPayment(payment).subscribe(
       resp => {
-        this.cartService.pay();
         this.updateStock();
+        this.cartService.pay();
         this.cart = new ShoppingCart();
         this.closeModel();
       },
