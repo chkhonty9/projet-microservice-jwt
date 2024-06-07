@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.cartService.instanceCart();
     this.cart = this.cartService.cart;
     console.log('init cart component cart : ', this.cart);
     this.total = this.cart.total;

@@ -23,11 +23,11 @@ export class CategoriesComponent implements OnInit{
   ) {}
 
   ngOnInit() {
+    this.getCategories();
     this.route.queryParams.subscribe((params) => {
-      this.categoryId = params['id'] || '';
+      this.categoryId = params['id'];
       this.loadProducts();
     });
-    this.getCategories();
     /*if(this.categoryId != ''){
       this.getProducts(this.categoryId);
     }else{
@@ -36,7 +36,7 @@ export class CategoriesComponent implements OnInit{
 
   }
   loadProducts() {
-    if(this.categoryId != ''){
+    if(this.categoryId){
       this.getProducts(this.categoryId);
     }else{
       this.getProducts(this.categories[0].id!);
@@ -60,7 +60,7 @@ export class CategoriesComponent implements OnInit{
       categories => {
         console.log('categories : category component ');
         this.categories = categories;
-        //this.getProducts(this.categories[0].id!);
+        this.getProducts(this.categories[0].id!);
       },
       error => console.log('error : '+error)
     )

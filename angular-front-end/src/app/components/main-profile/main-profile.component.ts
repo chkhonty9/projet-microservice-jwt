@@ -19,6 +19,7 @@ export class MainProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.cartService.getCarts();
     this.carts = this.cartService.carts;
     console.log('init main profile component : ', this.carts);
     if(typeof window !== 'undefined') {
