@@ -35,6 +35,7 @@ export class NotDeliveredCartsComponent implements OnInit{
         console.log('resp :' + response);
         let elem = this.carts.findIndex(c => c.id === cart.id);
         this.carts.splice(elem, 1);
+        this.shoppingCartService.getCarts();
       },
       error => console.log('error : ' + error)
     )

@@ -86,7 +86,7 @@ export class CartComponent implements OnInit {
         this.cartService.pay();
         this.cart = new ShoppingCart();
         this.closeModel();
-        this.router.navigate(['/layout/home']);
+        //this.router.navigate(['/layout/home']);
       },
       error => console.log('error : '+error)
     )

@@ -173,6 +173,7 @@ export class ShoppingCartService{
   pay(){
     this.cart.status = true;
     this.saveCart();
+    this.cart = new ShoppingCart();
     this.instanceCart();
   }
 
