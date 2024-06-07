@@ -22,7 +22,8 @@ export class CartComponent implements OnInit {
     private cartService: ShoppingCartService,
     private productService:ProductsService,
     private paymentService:PaymentService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -85,6 +86,7 @@ export class CartComponent implements OnInit {
         this.cartService.pay();
         this.cart = new ShoppingCart();
         this.closeModel();
+        this.router.navigate(['/layout/home']);
       },
       error => console.log('error : '+error)
     )

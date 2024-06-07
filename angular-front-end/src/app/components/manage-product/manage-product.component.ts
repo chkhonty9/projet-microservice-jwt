@@ -23,7 +23,10 @@ export class ManageProductComponent implements OnInit {
   deleteItem(product: Product) {
     const shouldDelete = window.confirm("Are you sure you want to delete this product?");
     if (shouldDelete) {
-      this.productService.deleteProduct(product.id!);
+      this.productService.deleteProduct(product.id!).subscribe(
+        resp => console.log('deleted : ', resp),
+        error => console.log("error : "+error)
+      );
       let index = this.products.findIndex(p => p.id === product.id);
       this.products.splice(index, 1);
     }

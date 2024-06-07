@@ -18,7 +18,7 @@ export class ShoppingCartService{
   user:User = new User();
   carts: ShoppingCart[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.instanceCart();
     this.getCarts();
   }
@@ -174,7 +174,6 @@ export class ShoppingCartService{
     this.cart.status = true;
     this.saveCart();
     this.instanceCart();
-    this.router.navigate(['/layout/home']);
   }
 
   totalPrice(){

@@ -58,7 +58,10 @@ export class ManageCategoriesComponent  implements OnInit{
   delete(id: string | null) {
     const shouldDelete = window.confirm("Are you sure you want to delete this item?");
     if(shouldDelete) {
-      this.categoriesService.deleteCategory(id!);
+      this.categoriesService.deleteCategory(id!).subscribe(
+        resp => console.log('deleted : ', resp),
+        error => console.log("error : "+error)
+      );
       let index = this.categories.findIndex(category => category.id === id);
       this.categories.splice(index, 1);
     }
