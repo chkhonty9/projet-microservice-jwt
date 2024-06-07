@@ -27,7 +27,6 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.instanceCart();
     this.cart = this.cartService.cart;
     console.log('init cart component cart : ', this.cart);
     this.total = this.cart.total;
@@ -90,8 +89,9 @@ export class CartComponent implements OnInit {
         //this.router.navigate(['/layout/home']);
       },
       error => console.log('error : '+error)
-    )
-
+    );
+    this.cartService.instanceCart();
+    this.cartService.getCarts();
   }
 
   updateStock(){
